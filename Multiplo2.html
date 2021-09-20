@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Multiplo de 2</title>
+		
+	</head>
+	<body>
+	Introduce un numero <input type ="text" id ="txtn"/><input type ="button" value ="aceptar" onclick="par();"/>
+		<div id = "div1"></div>
+		<script>
+		function par(){
+		var numero = parseInt(document.getElementById("txtn").value);
+		var texto="";
+		if( (numero %2) ==0){
+		//document.getElementById("div1").innerHTML = "El numero "+numero+" es multiplo de 2";
+		texto = "El numero "+ numero+ " es multiplo de dos";
+		}
+		else {
+		//document.getElementById("div1").innerHTML = "El numero "+numero+" no es multiplo de 2";
+		texto = "El numero "+ numero+ " NO es multiplo de dos";
+		}
+		document.getElementById("div1").innerHTML = texto;
+		}
+		</script>
+		
+		
+	</body>
+</html>

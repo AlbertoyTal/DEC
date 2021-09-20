@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Formulario suma</title>
+		
+	</head>
+	<body>
+		Introduzca el valor de a 
+		<input type = "text" id="txta"/><br><br>
+		Introduzca el valor de b
+		<input type = "text" id="txtb"/><br>
+		El resultado es 
+		<input type = "text" id="txtResultado"/><br>
+		<input type ="button" value="Sumar" onclick="suma();"/>
+		<script>
+			function suma(){
+				var a = parseInt(document.getElementById("txta").value);
+				var b = parseInt(document.getElementById("txtb").value);
+				document.getElementById("txtResultado").value = a + b;
+				
+			}
+			</script>
+	</body>
+</html>
