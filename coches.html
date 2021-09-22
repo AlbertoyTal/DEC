@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Busca Talleres </title>
+		
+	</head>
+	<body>
+	<label for="marca">Marca de coche</label>
+	<input type="text" id="marca"/><br><br>
+	<input type ="button" value ="Buscar taller" onclick="taller();"/><br><br>
+	<div id ="texto"></div>
+		
+		<script>
+		// ford -> talleres Velasco
+		// citroen -> talleres Doctor Esquerdo
+		// peugeot -> Talleres Las Acacias
+		function taller(){
+		var marcaC = document.getElementById("marca").value;
+		var texto ="";
+		switch (marcaC.toLowerCase()){
+		case "ford": texto="Talleres Velasco";break;
+		case "citroen": texto="Talleres Doctor Esquerdo";break;
+		case "peugeot": texto ="Talleres Las Acacias";break;
+		default: texto="No trabajamos con su marca de coche";
+		}
+		document.getElementById("texto").innerHTML =texto;
+		}
+		
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Categorias Jugadores </title>
+		
+	</head>
+	<body>
+	<label for="edad">Introduce edad</label>
+	<input type="text" id="edad"/><br><br>
+	<input type ="button" value ="Mostrar" onclick="categoria();"/><br><br>
+	<div id ="texto"></div>
+		
+		<script>
+		function categoria(){
+		var e= parseInt(document.getElementById("edad").value);
+		var texto = "";
+		switch (e){
+		case 5:
+		case 6:
+		case 7: texto = "Pertenece a la categoria Pre Benjamin";break;
+		case 8:
+		case 9: texto = "Pertenece a la categoria Benjamin";break;
+		case 10:
+		case 11: texto = "Pertenece a la categoria Alevin"; break;
+		case 12:
+		case 13: texto = "Pertenece a la categoria Infantil"; break;
+		case 14:
+		case 15: texto = "Pertenece a la categoria Cadete"; break;
+		case 16:
+		case 17:
+		case 18: texto = "Pertenece a la categoria Juvenil"; break;
+		default: texto = "Fuera de categoria";	
+		}
+		document.getElementById("texto").innerHTML= texto;
+		}
+		
+		</script>
+		
+		
+	</body>
+</html>
