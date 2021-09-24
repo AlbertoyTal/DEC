@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Lista bonita </title>
+		
+	</head>
+	<body>
+	
+	<script>
+	
+		// lista de 1-300
+		// cambia de linea cada 10
+		// multiplos de 4 con tamaño +4 y de color verde
+		// multiplos de 9 con tamaño -2 y color rojo
+		// (font size = )(<font color = ""></font>)
+		var texto="";
+		for(var i=1;i<=300;i++){
+		
+		 if(i%4==0){
+		texto+="<font size='+4' color='green'>"+i+"</font>, ";
+		}
+		else if(i%9==0){
+		texto+="<font size='-2' color='red'>"+i+"</font>, ";
+		}
+		else {
+		texto+=""+i+", ";
+		}
+		if(i%10==0){
+		texto+="<br>";
+		}
+		
+		}
+		document.write(texto);
+		
+		</script>							
+	</body>
+</html>

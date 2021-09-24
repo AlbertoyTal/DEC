@@ -11,17 +11,18 @@
 		// Si n acaba en 7 escribe PUM y salta de linea
 		// Si n es multiplo de 7 escribe PUM y salta de linea
 		// Ambos casos no escribe el numero
-		
+		var texto="";
 		for(var i =1;i<=100;i++){
 		
 		if(i%10==7 || i%7==0){
-		document.write("PUM<br>")
+		texto+= "PUM<br>";
 		}
 		else{
-		document.write(i+" , ")
+		texto+=(i+", ");
 		}
 		
 		}
+		document.write(texto);
 		</script>							
 	</body>
 </html>

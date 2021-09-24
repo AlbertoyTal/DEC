@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Primo </title>
+		
+	</head>
+	<body>
+	<label for="numero">Introduzca un numero</label><input type ="text" id="numero"/>
+	<br>
+	<input type="button" value="Evaluar" onclick="comprobar();"/>
+	<div id="txtComp"></div>
+	<script>
+	
+		//El usuario introduce un numero
+		// Ver si es primo o no
+		function comprobar(){
+		var n = parseInt(document.getElementById("numero").value);
+		var cont = 0;
+		var texto ="";
+		for(var i =1;i<=n;i++){
+			if(n%i==0){
+		cont++;
+			}
+			
+		if(cont>2){
+		texto ="El numero "+n+" no es primo";
+		}
+			else if(cont==1){
+				texto ="El numero "+n+" no es primo";
+			}
+			else {
+		texto ="El numero "+n+" es primo";
+			}
+		document.getElementById("txtComp").innerHTML = texto;
+		}
+		
+		
+		</script>							
+	</body>
+</html>
