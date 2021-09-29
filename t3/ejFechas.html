@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Fechas</title>
+</head>
+<body>
+<script>
+//mostrar fecha del sistema
+// mostrar 14/05/2019 texto y numero
+var fechaSis = new Date();
+document.write(fechaSis+"<br/>");
+var fecha = new Date("May 14,2019");
+document.write(fecha+"<br/>");
+var fecha2 = new Date("May 14,2019 20:14:23");
+document.write(fecha2+" = ");
+document.write(fecha2.getDate()+"/"+parseInt(fecha2.getMonth()+1)+"/"+fecha2.getFullYear()
++" "+fecha2.getHours()+":"+fecha2.getMinutes()+":"+fecha2.getSeconds()+"<br/>");
+</script>
+</body>
+</html>

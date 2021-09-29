@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Factorial </title>
+		
+	</head>
+	<body>
+	<label for="numero">Introduzca un numero</label><input type ="text" id="numero"/>
+	<br>
+	<input type="button" value="Calcular" onclick="factorial();"/>
+	<div id="txtComp"></div>
+	<script>
+	
+		//El usuario introduce un numero
+		// Calcular su factorial
+		function factorial(){
+		var n = parseInt(document.getElementById("numero").value);
+		var res =n;
+		var texto=""+n;
+		for(var i =n-1;i>=1;i--){
+			texto+="x "+i;
+				res*=i;	
+		}
+		document.getElementById("txtComp").innerHTML = n+"!= "+texto+"= "+res;
+		}
+		
+		
+		</script>							
+	</body>
+</html>
