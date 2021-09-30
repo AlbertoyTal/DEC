@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Fecha San Fernando</title>
+</head>
+<body>
+<div id="miDiv"></div>
+<script>
+var fecha = new Date();
+var texto="";
+var diaS = fecha.getDay();
+var mes = fecha.getMonth();
+switch(diaS){
+case 0:diaS="domingo";break;
+case 1:diaS="lunes";break;
+case 2:diaS="martes";break;
+case 3:diaS="miercoles";break;
+case 4:diaS="jueves";break;
+case 5:diaS="viernes";break;
+case 6:diaS="sabado";break;
+}
+
+switch(mes){
+case 0: mes="enero";break;
+case 1: mes="febrero";break;
+case 2: mes="marzo";break;
+case 3: mes="abril";break;
+case 4: mes="mayo";break;
+case 5: mes="junio";break;
+case 6: mes="julio";break;
+case 7: mes="agosto";break;
+case 8: mes="septiembre";break;
+case 9: mes="octubre";break;
+case 10: mes="noviembre";break;
+case 11: mes="diciembre";break;
+}
+texto+="En San Fernando de Henares, el "+diaS+" a "+fecha.getDate()+" de "+mes+" del "+fecha.getFullYear()+" a las "+fecha.getHours()+" horas, "+fecha.getMinutes()+" minutos con "+fecha.getSeconds()+" segundos.";
+document.getElementById("miDiv").innerHTML=texto;
+	</script>
+	
+</body>
+</html>
