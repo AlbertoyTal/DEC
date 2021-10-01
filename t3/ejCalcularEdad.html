@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Calcular Edad</title>
+</head>
+<body>
+Año <input type="text" id="año"/><br/>
+Mes <input type="text" id="mes"/><br/>
+Dia <input type="text" id="dia"/><br/><br/>
+<input type="button" value="Calcular" onclick="calcularEdad()"/><br/><br/>
+<div id="miDiv"></div>
+<script>
+//El usuario introduce una fecha (año,mes,dia)
+//Calcular su edad
+	function calcularEdad(){
+	var año=parseInt(document.getElementById("año").value);
+	var mes=parseInt(document.getElementById("mes").value)-1;
+	var dia=parseInt(document.getElementById("dia").value);
+	var fecha=new Date();
+	var nac = new Date(año,mes,dia);
+	var edad = 0;
+	edad = fecha.getFullYear()-nac.getFullYear();
+	if(nac.getMonth()==fecha.getMonth()){
+		if(nac.getDate()>fecha.getDate()){
+		edad--;
+		}
+	}
+	else if(nac.getMonth()>fecha.getMonth()){
+	edad--;
+	}
+	document.getElementById("miDiv").innerHTML = edad;
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Modificacion de fechas</title>
+</head>
+<body>
+<script>
+var fechaHoy = new Date();
+document.write("a-"+fechaHoy.toLocaleString()+"<br/>");
+var fecha85 = new Date(fechaHoy);
+
+fecha85.setDate(fechaHoy.getDate()+85);
+
+document.write("b-"+fecha85.toLocaleString()+"<br/>");
+
+var fecha187 = new Date(fechaHoy);
+fecha187.setDate(fechaHoy.getDate()-187);
+document.write("c-"+fecha187.toDateString()+"<br/>");
+
+fecha85.setFullYear(fecha85.getFullYear()+2);
+document.write("d-"+fecha85.toLocaleString()+"<br/>");
+
+fecha187.setHours(fecha187.getHours()-24);
+document.write("e-"+fecha187.toLocaleString()+"<br/>");
+
+var fechaResto = new Date(fecha85-fecha187);
+document.write("f-"+fechaResto.toLocaleString()+"<br/>");
+fechaResto.setFullYear(fechaResto.getFullYear()-1970);
+document.write("f-"+fechaResto.toLocaleString()+"<br/>");
+var dias = fecha85.getDate()-fecha187.getDate();
+var meses = fecha85.getMonth()-fecha187.getMonth();
+var años = fecha85.getFullYear()- fecha187.getFullYear();
+	document.write("Dias: "+dias+" Meses: "+meses+" Años: "+años);
+
+</script>
+
+</body>
+
+</html>
