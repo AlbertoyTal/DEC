@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Reloj</title>
+</head>
+<body>
+<input type="button" id="iniciar"onclick="iniciar()" value="Iniciar"/>
+<input type="button" id="stop" onclick="pararInterval()" value="Parar" disabled="disabled"/>
+<div id="miDiv"></div>
+<script>
+
+//						 "funcion()"
+// variable1 = setTimeout(funcion,tiempo(ms));
+// clearTimeout(variable1);
+// variable2 = setInterval(funcion,tiempo(ms));
+// clearInterval(variable2);
+// document.getElementById(" ").disabled=true/false;
+var parar="";
+
+
+function iniciar(){
+parar=setInterval('tiempo()',1000);
+}
+function tiempo(){
+var fecha = new Date();
+var hora = (fecha.getHours()<10)? "0"+fecha.getHours(): fecha.getHours();
+var minuto = (fecha.getMinutes()<10)? "0"+fecha.getMinutes(): fecha.getMinutes();
+var segundo = (fecha.getSeconds()<10)? "0"+fecha.getSeconds(): fecha.getSeconds();
+var texto = "";
+texto =hora+":"+minuto+":"+segundo;
+
+document.getElementById("miDiv").innerHTML = texto;
+document.getElementById("iniciar").disabled=true;
+document.getElementById("stop").disabled=false;
+}
+function pararInterval(){
+clearInterval(parar);
+document.getElementById("iniciar").disabled=false;
+document.getElementById("stop").disabled=true;
+}
+
+</script>
+
+</body>
+
+</html>
