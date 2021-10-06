@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Ejemplo number</title>
+</head>
+<body>
+<script>
+function numeros(){
+var resultado = "";
+var num = 5.56789;
+var n = num.toFixed(4);
+var n2 = num.toPrecision(4);
+var n3 = num.toExponential(4);
+var n4 = num.toString();
+resultado = "toFixed: "+n+" ---- toPrecision: "+n2;
+resultado += "<br/>toExponential: "+n3+" ---- toString: "+n4;
+document.getElementById("div2").innerHTML= resultado;
+}
+</script>
+<h1 onclick="numeros()">Ejemplo Number</h1>
+<div id="div2"></div>
+</body>
+
+</html>
