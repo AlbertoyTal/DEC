@@ -5,7 +5,7 @@
 <title>Numeros aleatorios</title>
 </head>
 <body>
-Numero de elementos<input type="text" id="cantidad"/>
+Numero de elementos<input type="text" id="cantidad"/><br/>
 Menor <input type="text" id="nMenor"/>
 <br/>
 Mayor <input type="text" id="nMayor"/>
@@ -27,6 +27,10 @@ var menor = parseInt(document.getElementById("nMenor").value);
 var mayor = parseInt(document.getElementById("nMayor").value);
 var texto = "";
 var n = 0;
+	if(cantidad>(mayor-menor)+1){
+		texto = "No caben tantos numeros";
+	}
+	else {
 	for(var i = 1;i<=cantidad;i++){
 	n = Math.floor((Math.random()*(mayor-menor+1))+menor);
 	var igual = false;
@@ -43,7 +47,21 @@ var n = 0;
 				else{
 				i--}
 	}
+	var ni, i, k, aux;
+    var ni = numeros.length;
+    
+    // Algoritmo de burbuja
+    for (k = 1; k < ni; k++) {
+        for (i = 0; i < (ni - k); i++) {
+            if (numeros[i] > numeros[i + 1]) {
+                aux = numeros[i];
+                numeros[i] = numeros[i + 1];
+                numeros[i + 1] = aux;
+            }
+        }
+	}
 	texto+=numeros;
+	}
 document.getElementById("miDiv").innerHTML = texto;
 }
 </script>
