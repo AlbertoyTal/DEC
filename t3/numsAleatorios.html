@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Numeros aleatorios</title>
+</head>
+<body>
+Menor <input type="text" id="nMenor"/>
+<br/>
+Mayor <input type="text" id="nMayor"/>
+<br/>
+<input type="button" onclick="generarAleatorio()" value="Generar"/>
+<div id="miDiv"></div>
+<script>
+// introducir numero menor
+// introducir numero mayor
+// generar
+// mostrar el numero aleatorio
+// Math.random() 0(inc)y 1 (exc)
+// Math.floor((math.random() *(max-min+1))+min)
+function generarAleatorio(){
+var menor = parseInt(document.getElementById("nMenor").value);
+var mayor = parseInt(document.getElementById("nMayor").value);
+var texto = "";
+	for(var i = 1;i<=5;i++){
+		texto+= "Numero "+i+": "+Math.floor((Math.random()*(mayor-menor+1))+menor)+"<br/>";
+	}
+document.getElementById("miDiv").innerHTML = texto;
+}
+</script>
+</body>
+</html>
