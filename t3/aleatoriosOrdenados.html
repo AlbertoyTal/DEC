@@ -20,18 +20,27 @@ Mayor <input type="text" id="nMayor"/>
 // mostrar el numero aleatorio
 // Math.random() 0(inc)y 1 (exc)
 // Math.floor((math.random() *(max-min+1))+min)
+// ordenar de menor a mayor (algoritmo butbuja)
 function generarAleatorio(){
 var cantidad = parseInt(document.getElementById("cantidad").value)
 var numeros =[];
 var menor = parseInt(document.getElementById("nMenor").value);
 var mayor = parseInt(document.getElementById("nMayor").value);
 var texto = "";
-var n = 0;
-	if(cantidad>(mayor-menor)+1){
+var n = 0;	
+var aux2 = 0;
+	if(mayor<menor){
+	aux2 = mayor;
+	mayor=menor;
+	menor = aux2;
+	}
+	if(cantidad>((mayor-menor)+1)){
 		texto = "No caben tantos numeros";
 	}
+		
 	else {
 	for(var i = 1;i<=cantidad;i++){
+	//console.log(i);
 	n = Math.floor((Math.random()*(mayor-menor+1))+menor);
 	var igual = false;
 		for(var j = 0;j<=numeros.length;j++){
@@ -41,15 +50,17 @@ var n = 0;
 			}
 				
 			}
-			if(!igual){
-				numeros[numeros.length] = n;
+		if(!igual){
+				//numeros[numeros.length] = n;
+				 numeros.push(n);
 			}
-				else{
-				i--}
+			else{
+			i--;
+			}
 	}
+	
 	var ni, i, k, aux;
     var ni = numeros.length;
-    
     // Algoritmo de burbuja
     for (k = 1; k < ni; k++) {
         for (i = 0; i < (ni - k); i++) {
