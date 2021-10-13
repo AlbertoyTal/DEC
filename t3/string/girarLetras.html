@@ -12,22 +12,21 @@ Texto: <input type="text" id="miTexto"/>
 <input type="button" onclick="iniciarI()" value="Girar Izquierda"/>
 <input type="button" onclick="iniciarD()" value="Girar Derecha"/>
 <br/><br/>
-<input type="button" onclick="pararIzq()" value="Parar Izquierda"/>
-<input type="button" onclick="pararDer()" value="Parar Derecha"/>
+<input type="button" onclick="pararG()" value="Parar"/>
 <div id="miDiv"></div>
 <script>
-var pararI="";
-var pararD="";
+
+var parar="";
 var texto ="";
 function iniciarI(){
 texto = document.getElementById("miTexto").value;
-pararI=setInterval('girarIzquierda()',1000);
+parar=setInterval('girarIzquierda()',1000);
 
 }
 
 function iniciarD(){
 texto = document.getElementById("miTexto").value;
-pararD=setInterval('girarDerecha()',1000);
+parar=setInterval('girarDerecha()',1000);
 
 }
 
@@ -57,12 +56,10 @@ function girarDerecha(){
 		document.getElementById("miDiv").innerHTML=texto;
 	
 }
-function pararIzq(){
-clearInterval(pararI);
+function pararG(){
+clearInterval(parar);
 }
-function pararDer(){
-clearInterval(pararD);
-}
+
 
 </script>
 </body>
