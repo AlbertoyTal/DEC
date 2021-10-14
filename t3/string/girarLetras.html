@@ -21,41 +21,25 @@ var texto ="";
 function iniciarI(){
 texto = document.getElementById("miTexto").value;
 parar=setInterval('girarIzquierda()',1000);
-
 }
 
 function iniciarD(){
 texto = document.getElementById("miTexto").value;
 parar=setInterval('girarDerecha()',1000);
-
 }
 
 function girarIzquierda(){
 		console.log(texto);
-
-
-		
-		//aux = texto.replace(texto.charAt(0), texto.charAt(texto.length-1));
-		//aux = aux.replace(aux.charAt(aux.length),texto.charAt(0));
-		texto = texto.charAt(texto.length-1) + texto.substring(0,texto.length-1);
-		//aux = aux.replace(aux.charAt(aux.length),0);
-		
-		document.getElementById("miDiv").innerHTML=texto;
-	
+		texto = texto.charAt(texto.length-1) + texto.substring(0,texto.length-1);	
+		document.getElementById("miDiv").innerHTML=texto;	
 }
+
 function girarDerecha(){
 		console.log(texto);
-
-
-		
-		//aux = texto.replace(texto.charAt(0), texto.charAt(texto.length-1));
-		//aux = aux.replace(aux.charAt(aux.length),texto.charAt(0));
-		//texto = texto.charAt(texto.length-1) + texto.substring(0,texto.length-1);
-		//aux = aux.replace(aux.charAt(aux.length),0);
-		texto = texto.charAt(1) + texto.substring(2,texto.length)+texto.charAt(0);
-		document.getElementById("miDiv").innerHTML=texto;
-	
+		texto =texto.substring(1,texto.length)+texto.charAt(0);
+		document.getElementById("miDiv").innerHTML=texto;	
 }
+
 function pararG(){
 clearInterval(parar);
 }
