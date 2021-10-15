@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ejercicio 3</title>
+</head>
+
+<body>
+
+Ciudad <input type="text" id="ciudad"/><br/><br/>
+<input type="button" value="Enviar" onclick="validarCiudad()"/><br/>
+<div id="ciudadValida"></div>
+<script>
+function validarCiudad(){
+var ciudad = document.getElementById("ciudad").value;
+var texto = "";
+ciudad = ciudad.toLowerCase();
+	if(ciudad=="madrid"||ciudad=="barcelona"||ciudad=="sevilla"||ciudad=="bilbao"){
+	texto = "La ciudad introducida es "+ciudad;
+}
+else{
+texto = "La ciudad introducida no es correcta";
+}
+document.getElementById("ciudadValida").innerHTML=texto;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ejercicio 4</title>
+</head>
+
+<body>
+a. Valor de A: [código del carácter]<br/>
+b. Valor de C: [código del carácter]<br/>
+c. Valor de Ñ: [código del carácter]<br/>
+d. Valor de 90: [carácter correspondiente a este código]<br/>
+e. Valores 72, 79, 76, 65: [cadena de caracteres correspondientes a este código]<br/>
+<input type="button" value="Convertir" onclick="convertir()"/>
+<div id="convertir"></div>
+<script>
+function convertir(){
+
+var a = "A".charCodeAt(0);
+var b = "C".charCodeAt(0);
+var c = "Ñ".charCodeAt(0);
+var d = String.fromCharCode(90);
+var e =String.fromCharCode(72)+String.fromCharCode(79)+String.fromCharCode(76)+String.fromCharCode(65); 
+var texto = "";
+	texto = "a- "+a+"<br/>b- "+b+"<br/>c- "+c+"<br/>d- "+d+"<br/>e- "+e;
+	
+document.getElementById("convertir").innerHTML=texto;
+}
+</script>
+</body>
+</html>

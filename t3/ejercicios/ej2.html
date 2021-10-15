@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ejercicio 2</title>
+</head>
+
+<body>
+
+Nombre <input type="text" id="nombre"/><br/><br/>
+Apellido 1 <input type="text" id="a1"/><br/><br/>
+Apellido 2 <input type="text" id="a2"/><br/><br/>
+<input type="button" value="Enviar" onclick="formatear()"/><br/>
+<div id="textoJunto"></div>
+<script>
+function formatear(){
+var nom = document.getElementById("nombre").value;
+
+
+var ap1 = document.getElementById("a1").value;
+
+
+var ap2 = document.getElementById("a2").value;
+
+
+document.getElementById("textoJunto").innerHTML = nom + " "+ap1+" "+ap2+".<br/>";
+document.getElementById("textoJunto").innerHTML += nom+ap1+ap2;
+}
+</script>
+</body>
+</html>

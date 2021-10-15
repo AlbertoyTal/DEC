@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ejercicio 5</title>
+</head>
+
+<body>
+busco palabras con menos de cinco letras<br/>
+a. Mostrar el número de palabras con menos (estricto) de cinco letras.<br/>
+b. Mostrar si existe en la frase alguna combinación de letras “co”.<br/>
+c. Reemplazar y mostrar la primera “co” por “Pepe”.<br/>
+d. Reemplazar y mostrar todas las “a” por “o”.<br/>
+e. Mostrar todas las letras separadas “b,u,s,c,o, , p, …… ,a,s”.<br/>
+f. Mostrar las diez primeras letras separadas.<br/>
+<input type="button" value="Comprobar" onclick="comprobar()"/><br/>
+<div id="miDiv"></div>
+<script>
+function comprobar(){
+var frase = "busco palabras con menos de cinco letras";
+var aux = frase.split(" ");
+var a = "";
+
+//a
+
+for(var i =0;i<aux.length;i++){
+	if(aux[i].length<5){
+	a += aux[i]+", ";
+	}		
+}
+
+a = a.substring(0,a.length-2)+".";
+//b
+var patron = /co/gi;
+var b = "";
+
+for(var i =0;i<aux.length;i++){
+	if(aux[i].match(patron)){
+	b += aux[i]+", ";
+	}
+}
+b = b.substring(0,b.length-2)+".";
+//c
+var c = frase.replace("co","Pepe");
+
+//d
+var patronD = /a/g;
+var d = frase.replace(patronD,"o");
+
+//e
+var e ="";
+for(var i=0;i<frase.length;i++){
+if(i==frase.length-1){
+	e+=frase[i]+".";
+}else{
+	e+=frase[i]+", ";
+	}
+}
+//f
+var f ="";
+for(var i=0;i<10;i++){
+	
+	f+=(i!=9)? frase[i]+", ":frase[i]+"." ;
+}
+document.getElementById("miDiv").innerHTML="a- "+a+"<br/>b- "+b+"<br/>c- "+c+"<br/>d- "+d+"<br/>e- "+e+"<br/>f-"+f;
+
+}
+</script>
+</body>
+</html>
