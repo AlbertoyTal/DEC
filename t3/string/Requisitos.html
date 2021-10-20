@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Requisitos</title>
+</head>
+
+<body>
+<div>
+<div id="divNI" style="float:left;width:50%;inline">Nombre <input type="text" id="nombre"/></div>
+<div id="divN" style="float:right;width:50%;inline"></div>
+</div>
+<div style="clear:both"></div>
+<br/>
+<div>
+<div id="divEI" style="float:left;width:50%;inline">Edad <input type="text" id="edad" /></div>
+<div id="divE" style="float:right;width:50%;inline"></div>
+</div>
+<div style="clear:both"></div>
+<br/>
+<input type="button" value="Enviar" onclick="comprobar()"/>
+<input type="button" value="Limpiar" onclick="limpiar()"/>
+
+<script>
+function comprobar(){
+var nombre = document.getElementById("nombre").value;
+var edad = document.getElementById("edad").value;
+var permitidos = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnÑñOoPpQqRrSsTtUuVvWwXxYyZzÁáÉéÍíÓóÚúçÇ";
+var texto = "";
+	if(nombre.length<=25&&nombre.length>=3){
+	for(var i = 0;i<nombre.length;i++){
+		if(permitidos.indexOf(nombre.charAt(i))==-1){
+		texto = "<font color='red'> Hay un error en el caracter numero "+(i+1)+" del texto</font>";
+		}
+		else{
+		texto = "<font color='blue'>Todos los caracteres son correctos</font>";
+		}
+	
+	}
+}
+else{
+texto = "<font color='red'>Faltan/sobran caracteres</font>";
+}
+var texto2 = "";
+var nums = "0123456789"
+if(parseInt(edad)>=5&&parseInt(edad)<=110){
+for(var i = 0;i<edad.length;i++){
+		if(nums.indexOf(edad.charAt(i))==-1){
+		texto2 = "<font color='red'> Hay un error en el caracter numero "+(i+1)+" del texto</font>";
+		}
+		else{
+		texto2 = "<font color='blue'>Todos los caracteres son correctos</font>";
+		}
+		
+}
+}
+else{
+texto2 = "<font color='red'>Fuera de rango</font>";
+}
+document.getElementById("divN").innerHTML=texto;
+document.getElementById("divE").innerHTML=texto2;
+}
+
+
+</script>
+</body>
+</html>
