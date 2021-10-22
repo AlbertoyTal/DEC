@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Navigator</title>
+</head>
+
+<body>
+<h1>Navigator</h1>
+Codigo del nombre del navegador: <label id="codNav"></label><br/>
+Nombre del navegador: <label id="nNav"></label><br/>
+Version del navegador: <label id="vNav"></label><br/>
+Idioma del navegador: <label id="iNav"></label><br/>
+Plataforma sobre la que se ejecuta el navegador: <label id="pNav"></label><br/>
+Informacion completa del agente del usuario: <label id="iUser"></label><br/>
+Informa acerca de si están habilitadas las cookies: <label id="iCookies"></label><br/>
+Informa acerca de si están habilitada la ejecución de programas escritos en Java:
+<label id="iJS"></label><br/>
+
+<h1>Screen</h1>
+Altura total: <label id="aT"></label><br/>
+Altura disponible: <label id="aD"></label><br/>
+Anchura total:  <label id="anT"></label><br/>
+Anchura disponible: <label id="anD"></label><br/>
+
+<script>
+
+
+var agenteUser = navigator.userAgent
+
+document.getElementById("codNav").innerHTML= "<strong>"+navigator.appCodeName+"</strong>";
+document.getElementById("vNav").innerHTML = "<strong>"+navigator.appVersion+"</strong>";
+document.getElementById("iNav").innerHTML = "<strong>"+navigator.language+"</strong>";
+document.getElementById("pNav").innerHTML = "<strong>"+navigator.platform+"</strong>";
+document.getElementById("iUser").innerHTML = "<strong>"+agenteUser+"</strong>";
+document.getElementById("iCookies").innerHTML = "<strong>"+navigator.cookieEnabled+"</strong>";
+document.getElementById("iJS").innerHTML = "<strong>"+navigator.javaEnabled()+"</strong>";
+
+var nombreNav = "";
+agenteUser = agenteUser.toLowerCase();
+	if(agenteUser.indexOf('edg')>=0){
+		nombreNav = "Microsoft Edge";
+	}
+	else if(agenteUser.indexOf('opr')>=0 || agenteUser.indexOf('opera')>=0 ){
+	nombreNav = "Opera";
+	}
+	else if(agenteUser.indexOf('firefox')>=0){
+	nombreNav = "Mozilla Firefox";
+	}
+	else if(agenteUser.indexOf('trident')>=0){
+	nombreNav = "Internet Explorer";
+	}
+	else if(agenteUser.indexOf('chrome')>=0){
+	nombreNav = "Google Chrome";
+	}
+	
+	document.getElementById("nNav").innerHTML = "<strong>"+nombreNav+"</strong>";
+
+document.getElementById("aT").innerHTML= "<strong>"+screen.height+"</strong>";
+document.getElementById("aD").innerHTML = "<strong>"+screen.availHeight+"</strong>";
+document.getElementById("anT").innerHTML = "<strong>"+screen.width+"</strong>";
+document.getElementById("anD").innerHTML = "<strong>"+screen.availWidth+"</strong>";
+
+</script>
+</body>
+</html>
