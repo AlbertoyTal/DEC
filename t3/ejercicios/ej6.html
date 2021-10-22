@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ejercicio 6</title>
+</head>
+
+<body>
+a. Mostrar la subcadena desde la posición 4, tres caracteres// subcadena = 'dos'<br/>
+b. Mostrar la subcadena desde la posición 4 hasta la posición 7 // subcadena ='dos'
+
+<div id="miDiv"></div>
+<script>
+var texto = "uno dos tres cuatro dos";
+var a = "a - "+texto.substr(4,3)+"<br/>";
+var b = "b - "+ texto.substring(4,7);
+document.getElementById("miDiv").innerHTML= a+b;
+</script>
+</body>
+</html>

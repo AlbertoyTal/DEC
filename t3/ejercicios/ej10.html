@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ejercicio 10</title>
+</head>
+
+<body>
+Introduce una palabra <input type="text" id="pal"/>
+<br/>
+<input type="button" value="Comprobar" onclick="comprobar();"/>
+<div id="miDiv"></div>
+<script>
+function comprobar(){
+var palabra = document.getElementById("pal").value;
+palabra = palabra.replaceAll(' ','');
+var sub = 0;
+var baja = palabra.length-1;
+var igual = true;
+var texto = "";
+while(sub<=baja){
+	if(palabra.charAt(sub)!= palabra.charAt(baja)){
+		igual = false;
+	
+	}
+	sub++;
+	baja--;
+}
+if(igual){
+texto = "La palabara es palindroma";
+
+}else{
+	texto = "La palabra no es palindroma";
+}
+	document.getElementById("miDiv").innerHTML = texto;
+	}
+</script>
+</body>
+</html>
