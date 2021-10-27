@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" onclick="abrir()" value="Abrir ventana"/>
+
+    <script>
+        function abrir(){
+            
+            var ventana = window.open("","ventanaNueva","width=400,height=400");
+            var cf = '<select id="colores"name="colores">'+
+                '<option value="rojo">Rojo</option>'+
+                '<option value="verde">Verde</option>'+
+                '<option value="amarillo">Amarillo</option>'+
+                '<option value="azul">Azul</option>'+
+                '</select>'+
+                '<input type="button" onclick="cambiarC()" value="Modificar color"/>'+
+                '\<script>'+
+                'function cambiarC(){'+
+                'var color = document.getElementById("colores").value;'+
+                'switch (color){'+
+                'case "rojo":document.bgColor="Red";break;'+
+                'case "verde":document.bgColor="Green";break;'+
+                'case "amarillo":document.bgColor="Yellow";break;'+
+                'case "azul":document.bgColor="Blue";break;}}'+
+                
+                '\<\/script>';
+                ventana.document.open();
+        ventana.document.write(cf);
+        ventana.document.close();
+        }
+        
+        
+    </script>
+</body>
+</html>

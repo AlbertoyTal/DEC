@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objeto Window</title>
+</head>
+
+<body>
+    <p>Haga click en los botones para abrir las ventanas</p>
+    Introduce un nombre para la ventana <input type="text" id="nombre" />
+    <br />
+    <button onclick="myFunction()">Pulse para abrir ventana</button>
+    <button onclick="myFunction2()">Pulse para abrir ventana que reemplaza la actual</button>
+    <button onclick="myFunction3()">Pulse para abrir nueva ventana</button>
+    <button onclick="myFunction4()">Pulse para abrir varias ventanas</button>
+    <button onclick="myFunction5()">Pulse para abrir una ventana con nombre</button>
+    <button onclick="abrir()">Abrir nueva ventana</button>
+    <button onclick="cerrar()">Cerrar nueva ventana</button>
+    <script>
+        var varVentana;
+        function abrir(){
+            varVentana = window.open("", "miVentana", "width=500,height=400");
+            varVentana.document.open();
+            varVentana.document.write("<button onclick='window.close()'>Cerrar Ventana</button>");
+            varVentana.document.close();
+        }
+        function cerrar(){
+                varVentana.close();
+        }
+
+    </script>
+
+
+    <script>
+        function myFunction() {
+            var miVentana = window.open("https://www.nasa.es", "_blank", "top=500,left=400,width=400,height=400");
+
+        }
+        function myFunction2() {
+            var miVentana = window.open("", "_blank");
+            miVentana.document.open();
+            miVentana.document.write("<p>Voy a reemplazar la ventana actual</p>");
+            miVentana.document.close();
+
+
+        }
+        function myFunction3() {
+            var miVentana = window.open("", "miVentana", "width=600,height=600");
+            miVentana.document.open();
+            miVentana.document.write("<p>Esta es " + miVentana.name + ", tengo 600 pixels de ancho y 600 pixels de altura</p>");
+            miVentana.document.close();
+
+
+        }
+        function myFunction4() {
+            window.open("https://www.google.es");
+            window.open("https://w3schools.com", "_blank", "top=500,left=400,width=400,height=400");
+
+
+        }
+        function myFunction5() {
+            var texto = document.getElementById("nombre").value;
+            var nuevaVentana = window.open("", texto, "");
+            nuevaVentana.document.open();
+            nuevaVentana.document.write("<title>" + nuevaVentana.name + "</title>");
+            nuevaVentana.document.write("<h1>" + nuevaVentana.name + "<h1>");
+            nuevaVentana.document.close();
+
+        }
+
+    </script>
+</body>
+
+</html>
