@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Apertura de ventana</h1>
+    <div id="dimensiones" style="text-align: center;">
+<label for="tl">Introduzca el top y el left</label>
+<input type="text" id="tl"/><input type="button" onclick="abrir()" value="Abrir Ventana"/>
+<input type="button" onclick="cerrar()" value="Cerrar Ventana"/>
+</div>
+<script>
+    var miVentana;
+    var cerrarV;
+    function abrir(){
+        if((typeof(miVentana)=='undefined') || (miVentana.closed)){
+        var distancia = document.getElementById("tl").value;
+       
+        miVentana = window.open("","","top="+distancia+",left="+distancia+",width=400,height=400");
+        miVentana.document.open();
+        miVentana.document.write("<button onclick='window.close()'>Cerrar Ventana</button>");
+        miVentana.document.close();
+        cerrarV = setTimeout('cerrar()',10000);
+
+    }
+    else{
+        miVentana.focus();
+    }
+}
+    function cerrar(){
+            miVentana.close();
+    }
+
+</script>
+</body>
+</html>

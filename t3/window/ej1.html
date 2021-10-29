@@ -20,16 +20,15 @@
                 '<option value="azul">Azul</option>'+
                 '</select>'+
                 '<input type="button" onclick="cambiarC()" value="Modificar color"/>'+
-                '\<script>'+
+                '<script>'+
                 'function cambiarC(){'+
                 'var color = document.getElementById("colores").value;'+
                 'switch (color){'+
                 'case "rojo":document.bgColor="Red";break;'+
                 'case "verde":document.bgColor="Green";break;'+
                 'case "amarillo":document.bgColor="Yellow";break;'+
-                'case "azul":document.bgColor="Blue";break;}}'+
-                
-                '\<\/script>';
+                'case "azul":document.bgColor="Blue";break;}}'+                
+                '<\/script>';
                 ventana.document.open();
         ventana.document.write(cf);
         ventana.document.close();
