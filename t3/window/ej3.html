@@ -15,6 +15,7 @@
             for(var i = 1;i<=10;i++){
                 miVentana = window.open("","Ventana "+i,"top="+i*20+",left="+i*20+",width=100,height=200");
                 miVentana.document.open();
+                miVentana.document.write("Ventana numero "+i);
                 miVentana.document.write("<button onclick='window.close()'>Cerrar Ventana "+i+"</button>");
                 miVentana.document.write("<script>setTimeout('window.close()',5000)\<\/script>");
                 miVentana.document.close();

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <button onclick="mover()">Mover</button>
+        <button onclick="redimensionar()">Redimensionar</button>
+        <button onclick="myr()">Mover y redimensionar</button>
+        <button onclick="moverH()">Mover hasta</button>
+        Valor de X<input type="text" id="x">Valor de Y<input type="text" id="y">
+
+    <script>
+
+var miVentana;
+var parar="";
+        function mover(){
+            
+        miVentana = window.open("","Ventana que se mueve","top=100, left=100, width=100, height=200")
+        
+        parar = setInterval(moverV,200);
+        setTimeout('clearInterval(parar);miVentana.close()',3500);
+
+        }
+
+        function moverV(){
+            if(miVentana.closed){
+                clearInterval(parar);
+            }
+            else {
+                miVentana.moveBy(10,20);
+            }
+        }
+
+        function redimensionar(){
+        miVentana = window.open("","Ventana que se redimensiona","top=100, left=100, width=100, height=200")
+        clearInterval(parar);
+            parar = setInterval(rV,200);
+        setTimeout('clearInterval(parar);miVentana.close()',3500);
+        }
+
+
+        function rV(){
+            if(miVentana.closed){
+                clearInterval(parar);
+            }
+            else{ 
+                miVentana.resizeBy(10,20);
+            }
+
+        }
+var stop = "";
+
+        function myr(){ 
+            miVentana = window.open("","Ventana que se mueve y se redimensiona","top=100, left=100, width=100, height=200")
+            clearInterval(parar);
+            clearInterval(stop);
+            parar = setInterval(rV,200);
+            stop = setInterval(moverV,200);
+            setTimeout('clearInterval(parar);clearInterval(stop);miVentana.close()',3500);
+        }
+
+
+    function moverH(){
+        var top = document.getElementById("x").value;
+        var left = document.getElementById("y").value;
+        miVentana = window.open("","Ventana con coordenadas","top="+top+",left="+left+",width=100,height=200");
+        setTimeout('miVentana.close()',3500);
+    }
+    </script>
+</body>
+</html>
