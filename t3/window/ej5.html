@@ -7,8 +7,20 @@
     <title>Document</title>
 </head>
 <body>
+    Introduce tu nombre<input type="text" id="nombre"/><button onclick="abrir()">Abrir Ventana</button>
     <script>
         //introducir nombre y abrir una ventana que contenga el nombre en un input deshabilitado
+        var miVentana;
+        function abrir(){
+            var nombre = document.getElementById("nombre").value;
+            miVentana=window.open("","miVentana","height=400,width=200");
+            miVentana.document.open();
+            miVentana.document.write("Nombre: ");
+            miVentana.document.write("<input type='text' disabled='disabled' value='"+nombre+"'/>")
+            miVentana.document.write("<br/><button onclick='window.close()'>Cerrar Ventana</button>")
+            miVentana.document.close();
+
+        }
     
     </script>
 </body>
