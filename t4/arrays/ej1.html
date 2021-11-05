@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    Numero: <input type="number" disabled="disabled" id="numero"/><br/>
+    <input type="button" onclick="principio()" value="|<<"/>
+    <input type="button" onclick="anterior()" value="<"/>
+    <input type="button" onclick="siguiente()" value=">"/>
+    <input type="button" onclick="final()" value=">>|"/><br/>
+    Ordenado Ascendente<br/>
+    <input type="text" disabled="disabled" id="as"/><br/>
+    Ordenado Descendente<br/>
+    <input type="text" disabled="disabled" id="des"/>
+    <script>
+        var numeros = new Array(9,54,1,5,25,6,1);
+        
+        document.getElementById("as").value = numeros.sort(compareForSortAs) ;
+        document.getElementById("des").value = numeros.sort(compareForSortDes);
+        document.getElementById("numero").value = numeros[3];
+        var actual = 0;
+
+        function principio(){
+            actual = 0;
+            document.getElementById("numero").value = numeros[actual];
+
+        }
+        function anterior(){
+                if(actual == 0){
+                    document.getElementById("numero").value = numeros[actual];
+                }
+                else{
+                    actual -= 1;
+                    document.getElementById("numero").value = numeros[actual];
+                }
+                
+                 
+                
+        }
+        function siguiente(){
+            
+            if( actual == numeros.length-1){
+                   
+                 document.getElementById("numero").value = numeros[actual];
+             }
+             else{
+                 actual += 1;
+                 document.getElementById("numero").value = numeros[actual];
+             }
+        }
+        
+
+        function final(){
+            actual = numeros.length-1;
+            document.getElementById("numero").value = numeros[actual];
+        }
+        
+        function compareForSortAs(valor1,valor2){
+            return (valor1-valor2);
+        }
+        function compareForSortDes(valor1,valor2){
+            return (valor2-valor1);
+        }
+    </script>
+</body>
+</html>

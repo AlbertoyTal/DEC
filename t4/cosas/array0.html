@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    
+</head>
+<script>
+/*var colores = new Array('rojo','verde','azul');
+var numeros = new Array(1,2,3);
+alert(colores.concat(numeros)); 
+
+var miMatriz = new Array('rojo','verde','azul');
+function mostrar(valor,indice,matriz){
+alert('El valor del elemento [' + indice+ '] de ' + matriz + ' es ' + valor);
+}
+miMatriz.forEach(mostrar)
+
+var a = new Array('hola','adios');
+alert(a.indexOf('hola')); // devuelve 0
+alert(a.indexOf('adios')); // devuelve 1
+alert(a.indexOf('tres')); // devuelve -1
+
+
+
+var a=new Array("a","b","a");
+alert(a.indexOf("a")); // Devuelve 0
+alert(a.lastIndexOf("a")); // Devuelve 2
+var colores = new Array('rojo','verde','azul');
+alert(colores.join('+'));
+
+var colores = new Array('rojo','verde','naranja');
+alert(colores.pop());
+alert(colores);
+
+var colores = new Array('rojo','verde','naranja');
+alert(colores.push('amarillo', "morado"));
+alert(colores);*/
+/*
+var colores = new Array('rojo','verde','azul', 'amarillo');
+colores.push('salmon', "morado");
+colores.reverse();
+alert(colores);
+alert(colores.shift());
+alert(colores);
+var colores = new Array('rojo','verde','naranja');
+alert(colores.slice(1,2));
+
+var colores = new Array('rojo','verde','Rojo',5);
+alert(colores.sort());
+
+
+
+var colores = new Array('rojo','verde','azul');
+colores.splice(1,2,'naranja','rosa','violeta');
+alert(colores);
+colores.splice(2,0,'amarillo');
+alert(colores);
+
+
+var colores = new Array ('rojo','verde','naranja');
+alert(colores.unshift('amarillo'));
+alert(colores);
+
+
+var numbers = [10, 11, 12, 52, 45, 69];
+var sum = 0;
+function addNumber(value) { sum += value; }
+// Llama a la función addNumber para cada elemento del array.
+numbers.forEach(addNumber);
+document.write(sum);*/
+var a = new Array(4, 11, 2, 10, 3, 1, 58, 14);
+var b = a.sort();
+document.write(b);
+document.write("<br/>");
+// Este es el orden de los caracteres ASCII.
+// Output: 1,10,11,2,3,4)
+// Ordenación de los elementos del array mediante el uso de una función.
+b = a.sort(CompareForSort);
+document.write(b);
+document.write("<br/>");
+// Output: 1,2,3,4,10,11.
+// Ordena los elementos del array en orden numérico ascendente.
+/*function CompareForSort(first, second)
+{
+ if (first == second)
+ return 0;
+ if (first < second)
+ return -1;
+ else
+ return 1;
+}
+
+
+var colores = new Array ('rojo','verde','naranja');
+document.write(colores+"<br>");
+c= colores.sort(CompareForSort);
+document.write(c);
+document.write("<br/>");
+*/
+function CompareForSort(first, second){
+ return (first - second); }
+function CompareForSort2(first, second){
+ return (second-first); }
+f = a.sort(CompareForSort2);
+document.write(f);
+document.write("<br/>");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.write("<br>");
+for (numero in b) {
+   document.write(b[numero] +"<br>");
+}
+for (numero of b) {
+   document.write(numero +"<br>");
+}
+
+
+</script>
+
+<body>
+   
+</body>
+
+</html>
