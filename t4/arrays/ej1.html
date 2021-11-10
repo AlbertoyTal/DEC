@@ -7,39 +7,42 @@
     <title>Arrays</title>
 </head>
 <body>
-    Numero: <input type="number" disabled="disabled" id="numero"/><br/>
+    Numero: <input type="text" disabled="disabled" id="numero"/><br/>
     <input type="button" id ="p" onclick="principio()" value="|<<"/>
     <input type="button" id ="a" onclick="anterior()" value="<"/>
     <input type="button" id ="s" onclick="siguiente()" value=">"/>
     <input type="button" id ="f" onclick="final()" value=">>|"/><br/><br/>
     <input type="button" id="al" onclick="alta()" value="Alta"/>
-    <input type="button" id ="b" onclick="baja()" value="Baja"/><br/><br/>
+    <input type="button" id ="b" onclick="baja()" value="Baja"/>
+    <input type="button" id ="m" onclick="modificar()" value="Modificar"/>
+    <input type="button" id ="l" onclick="listado()" value="Listado"/><br/><br/>
     <input type="button" id="ac" onclick="aceptar()" disabled="disabled" value="Aceptar"/><br/>
     Ordenado Ascendente<br/>
     <input type="text" disabled="disabled" id="as"/><br/>
     Ordenado Descendente<br/>
     <input type="text" disabled="disabled" id="des"/>
     <script>
-        var numeros = new Array(9,54,1,5,25,6,1);
+        var original = new Array(9,54,1,5,25,6,1);
+        var numeros = original.slice();
         var estado = "";
         document.getElementById("as").value = numeros.sort(compareForSortAs) ;
         document.getElementById("des").value = numeros.sort(compareForSortDes);
-        document.getElementById("numero").value = numeros[3];
-        var actual = 0;
+        document.getElementById("numero").value = original[3];
+        var actual = 3;
             
 
         function principio(){
             actual = 0;
-            document.getElementById("numero").value = numeros[actual];
+            document.getElementById("numero").value = original[actual];
 
         }
         function anterior(){
                 if(actual == 0){
-                    document.getElementById("numero").value = numeros[actual];
+                    document.getElementById("numero").value = original[actual];
                 }
                 else{
                     actual -= 1;
-                    document.getElementById("numero").value = numeros[actual];
+                    document.getElementById("numero").value = original[actual];
                 }
                 
                  
@@ -47,20 +50,20 @@
         }
         function siguiente(){
             
-            if( actual == numeros.length-1){
+            if( actual == original.length-1){
                    
-                 document.getElementById("numero").value = numeros[actual];
+                 document.getElementById("numero").value = original[actual];
              }
              else{
                  actual += 1;
-                 document.getElementById("numero").value = numeros[actual];
+                 document.getElementById("numero").value = original[actual];
              }
         }
         
 
         function final(){
-            actual = numeros.length-1;
-            document.getElementById("numero").value = numeros[actual];
+            actual = original.length-1;
+            document.getElementById("numero").value = original[actual];
         }
 
         
@@ -80,27 +83,136 @@
             document.getElementById("al").disabled=true;
             document.getElementById("numero").value="";
             document.getElementById("numero").disabled=false;
+            document.getElementById("m").disabled=true;
+            document.getElementById("l").disabled=true;
             estado="alta";
             
         }
         function baja(){
             document.getElementById("ac").disabled=false;
             document.getElementById("b").disabled=true;
-            
+            document.getElementById("m").disabled=true;
             document.getElementById("al").disabled=true;
-            
+            document.getElementById("l").disabled=true;
+            numeros = original.slice();
             
             estado="baja";
             
+        }
+        function modificar(){
+            numeros = original.slice();
+            document.getElementById("ac").disabled=false;
+            document.getElementById("b").disabled=true;
+            document.getElementById("p").disabled=true;
+            document.getElementById("a").disabled=true;
+            document.getElementById("s").disabled=true;
+            document.getElementById("f").disabled=true;
+            document.getElementById("al").disabled=true;
+            document.getElementById("m").disabled=true;
+            document.getElementById("numero").value="";
+            document.getElementById("numero").disabled=false;
+            document.getElementById("l").disabled=true;
+            estado = "modificar";
+
+        }
+        function listado(){
+            var ventanaListado = window.open("","listado","height=500,width=350,top=300,left=300")
+            
+            ventanaListado.document.open();
+            
+
+            ventanaListado.document.write("<body>");
+                ventanaListado.document.write("Array<br/>");
+               ventanaListado.document.write('<input type="text" id="aO" disabled="disabled"/><br/>');
+                ventanaListado.document.write("Ordenado Ascendente<br/>");
+                ventanaListado.document.write('<input type="text" id="oA" disabled="disabled"/><br/>');
+                ventanaListado.document.write("Ordenado Descendente<br/>");
+                ventanaListado.document.write('<input type="text" id="oD" disabled="disabled"/><br/>');
+                ventanaListado.document.write('<input type="button" onclick="window.close()" value="Cerrar"/>');
+                ventanaListado.document.write('<script>');
+                ventanaListado.document.write('document.getElementById("aO").value= "'+original+'";');
+                
+                ventanaListado.document.write('document.getElementById("oA").value= "'+numeros.sort(compareForSortAs)+'";');
+               
+                ventanaListado.document.write('document.getElementById("oD").value= "'+numeros.sort(compareForSortDes)+'";');
+                 ventanaListado.document.write('\<\/script\>');
+                ventanaListado.document.write("</body>");
+
+                ventanaListado.document.close();
         }
 
 
         function aceptar(){
             var numero = document.getElementById("numero").value;
+            var respuesta;
+            var permitidos = "0123456789";
+            var bien=true;
+            for(var i =0;i<numero.length;i++){
+                //console.log(numero.charAt(i));
+                //console.log(permitidos.indexOf(numero.charAt(i)));
+                if(permitidos.indexOf(numero.charAt(i)) == -1 ){
+                        bien=false;
+                }
+
+            }
+            if(!bien){
+                alert("Caracter no válido");
+                
+            }
+            else{
+                respuesta = confirm("Estas seguro?");
+                alert(numero);
+            if(respuesta){
                 if(estado=="alta"){
+                    original.push(numero);
                     numeros.push(numero);
-                    document.getElementById("numero").value= numeros[0];
+                    document.getElementById("numero").value= original[0];
                     actual = 0;
+                    
+                    document.getElementById("as").value = numeros.sort(compareForSortAs) ;
+                    document.getElementById("des").value = numeros.sort(compareForSortDes);
+                }
+                else if(estado=="baja"){
+                    original.splice(actual,1);
+                    numeros.splice(actual,1);
+                    actual = 0;
+                    
+                    document.getElementById("p").disabled=false;
+                    document.getElementById("a").disabled=false;
+                    document.getElementById("s").disabled=false;
+                    document.getElementById("f").disabled=false;
+                    document.getElementById("numero").disabled=true;
+                    document.getElementById("ac").disabled=true;
+                    document.getElementById("al").disabled=false;
+                if(original.length==0){
+                    document.getElementById("b").disabled=true;
+                    document.getElementById("numero").value= "";
+                }
+                else{
+                    document.getElementById("b").disabled=false;
+                    document.getElementById("numero").value= original[actual];
+                }
+                
+            document.getElementById("as").value = numeros.sort(compareForSortAs) ;
+            document.getElementById("des").value = numeros.sort(compareForSortDes);
+                }
+                else if(estado=="modificar"){
+                    original[actual] = document.getElementById("numero").value;
+                    numeros[actual] = document.getElementById("numero").value;
+                    
+                    document.getElementById("numero").value=original[actual];
+                    document.getElementById("numero").disabled=true;
+
+
+                    document.getElementById("as").value = numeros.sort(compareForSortAs) ;
+                    document.getElementById("des").value = numeros.sort(compareForSortDes);
+
+                    
+                }
+        }
+        else{
+        alert("No se han confirmado los cambios");
+    }
                     document.getElementById("p").disabled=false;
                     document.getElementById("a").disabled=false;
                     document.getElementById("s").disabled=false;
@@ -109,34 +221,11 @@
                     document.getElementById("ac").disabled=true;
                     document.getElementById("al").disabled=false;
                     document.getElementById("b").disabled=false;
-                    document.getElementById("as").value = numeros.sort(compareForSortAs) ;
-                    document.getElementById("des").value = numeros.sort(compareForSortDes);
-                }
-                else if(estado=="baja"){
-                numeros.splice(actual,1);
-                
-                actual = 0;
-                
-            document.getElementById("p").disabled=false;
-            document.getElementById("a").disabled=false;
-            document.getElementById("s").disabled=false;
-            document.getElementById("f").disabled=false;
-            document.getElementById("numero").disabled=true;
-            document.getElementById("ac").disabled=true;
-            document.getElementById("al").disabled=false;
-            if(numeros.length==0){
-            document.getElementById("b").disabled=true;
-            document.getElementById("numero").value= "";
-            }
-            else{
-            document.getElementById("b").disabled=false;
-            document.getElementById("numero").value= numeros[0];
-            }
-            
-            document.getElementById("as").value = numeros.sort(compareForSortAs) ;
-        document.getElementById("des").value = numeros.sort(compareForSortDes);
-                }
-        }
+                    document.getElementById("m").disabled=false;
+                    document.getElementById("l").disabled=false;
+}
+    }
+    
     </script>
 </body>
 </html>
