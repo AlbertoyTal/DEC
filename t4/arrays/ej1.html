@@ -116,6 +116,10 @@
 
         }
         function listado(){
+            var arrAs = original.slice() ;
+            arrAs = arrAs.sort(compareForSortAs);
+            var arrDes = original.slice();
+            arrDes = arrDes.sort(compareForSortDes);
             var ventanaListado = window.open("","listado","height=500,width=350,top=300,left=300")
             
             ventanaListado.document.open();
@@ -129,6 +133,12 @@
                 ventanaListado.document.write("Ordenado Descendente<br/>");
                 ventanaListado.document.write('<input type="text" id="oD" disabled="disabled"/><br/>');
                 ventanaListado.document.write('<input type="button" onclick="window.close()" value="Cerrar"/>');
+                ventanaListado.document.write("<table border='1'>");
+                    ventanaListado.document.write('<tr><th>Array</th><th>Ascendente</th><th>Descendente</th></tr>');
+                 for(var i = 0; i<original.length;i++){
+                    ventanaListado.document.write('<tr><td>'+original[i]+'</td><td>'+arrAs[i]+'</td><td>'+arrDes[i]+'</td></tr>');
+                 }
+                 ventanaListado.document.write('</table>');
                 ventanaListado.document.write('<script>');
                 ventanaListado.document.write('document.getElementById("aO").value= "'+original+'";');
                 
@@ -136,6 +146,7 @@
                
                 ventanaListado.document.write('document.getElementById("oD").value= "'+numeros.sort(compareForSortDes)+'";');
                  ventanaListado.document.write('\<\/script\>');
+                 
                 ventanaListado.document.write("</body>");
 
                 ventanaListado.document.close();
@@ -161,7 +172,7 @@
             }
             else{
                 respuesta = confirm("Estas seguro?");
-                alert(numero);
+                
             if(respuesta){
                 if(estado=="alta"){
                     original.push(numero);
