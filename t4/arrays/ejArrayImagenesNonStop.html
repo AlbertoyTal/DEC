@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagenes</title>
+</head>
+<body style="text-align: center;">
+    <input type="text" id="nombreFoto"/>
+    <input type="button" id ="añadir" onclick="añadir()" value="Añadir"/><br/><br/>
+    <div id="imagen" style=" width:100px; height: 75px; margin:auto" ><img src="" id="rutaImagen" style="width:100px; height:75px;"/></div>
+    <b>Indice:</b> <div id="indice"></div>
+    <input type="button" id="iniciar" value="Iniciar" onclick="iniciar()"/>
+    <input type="button" id="parar" value="Parar" onclick="parar()"  disabled="disabled"/>
+    
+
+    <script>
+        var arrayImg = new Array('imagenes/uno.jpg','imagenes/dos.jpg','imagenes/tres.jpg','imagenes/cuatro.jpg',);
+        var indice = 0;
+
+
+        document.getElementById("rutaImagen").src = arrayImg[indice];
+        document.getElementById("indice").innerHTML=indice;
+        var stop;
+            function iniciar(){
+                stop = setInterval("siguiente()",1000);
+                document.getElementById("iniciar").disabled=true;
+                document.getElementById("parar").disabled=false;
+            }
+            function parar(){
+                clearInterval(stop);
+                document.getElementById("parar").disabled=true;
+                document.getElementById("iniciar").disabled=false;
+            }
+            
+
+            function siguiente(){
+                if(indice == arrayImg.length-1){
+                    indice = 0;
+                    document.getElementById("rutaImagen").src = arrayImg[indice];
+                    document.getElementById("indice").innerHTML=indice;
+                }
+                else{
+                    indice+=1;
+                    document.getElementById("rutaImagen").src = arrayImg[indice];
+                    document.getElementById("indice").innerHTML=indice;
+                }
+            }
+
+    </script>
+</body>
+</html>

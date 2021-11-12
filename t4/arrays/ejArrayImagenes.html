@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagenes</title>
+</head>
+<body style="text-align: center;">
+    <input type="text" id="nombreFoto"/>
+    <input type="button" id ="añadir" onclick="añadir()" value="Añadir"/><br/><br/>
+    <div id="imagen" style=" width:100px; height: 75px; margin:auto" ><img src="" id="rutaImagen" style="width:100px; height:75px;"/></div>
+    <b>Indice:</b> <div id="indice"></div>
+    <input type="button" id ="p" onclick="principio()" value="|<<"/>
+    <input type="button" id ="a" onclick="anterior()" value="<"/>
+    <input type="button" id ="s" onclick="siguiente()" value=">"/>
+    <input type="button" id ="f" onclick="final()" value=">>|"/><br/><br/>
+    
+
+    <script>
+        var arrayImg = new Array('imagenes/uno.jpg','imagenes/dos.jpg','imagenes/tres.jpg','imagenes/cuatro.jpg',);
+        var indice = 0;
+
+        document.getElementById("rutaImagen").src = arrayImg[indice];
+        document.getElementById("indice").innerHTML=indice;
+
+            function principio(){
+                indice = 0;
+                document.getElementById("rutaImagen").src = arrayImg[indice];
+                document.getElementById("indice").innerHTML=indice;
+            }
+
+            function anterior(){
+                if(indice == 0){     
+                    indice = arrayImg.length-1;
+                    document.getElementById("rutaImagen").src = arrayImg[indice];
+                    document.getElementById("indice").innerHTML=indice;
+                }
+                else{
+                    indice-=1;
+                    document.getElementById("rutaImagen").src = arrayImg[indice];
+                    document.getElementById("indice").innerHTML=indice;
+                }   
+            }
+
+            function siguiente(){
+                if(indice == arrayImg.length-1){
+                    indice = 0;
+                    document.getElementById("rutaImagen").src = arrayImg[indice];
+                    document.getElementById("indice").innerHTML=indice;
+                }
+                else{
+                    indice+=1;
+                    document.getElementById("rutaImagen").src = arrayImg[indice];
+                    document.getElementById("indice").innerHTML=indice;
+                }
+            }
+            
+            function final(){
+                indice = arrayImg.length-1;
+                document.getElementById("rutaImagen").src = arrayImg[indice];
+                document.getElementById("indice").innerHTML=indice;
+            }
+            function añadir(){
+                var nombre = document.getElementById("nombreFoto").value;
+                nombre = nombre.trim();
+                if(nombre!=""){
+                arrayImg.push("imagenes/"+nombre+".jpg");
+                indice = arrayImg.length-1;
+                document.getElementById("rutaImagen").src = arrayImg[indice];
+                document.getElementById("indice").innerHTML=indice;
+                }
+                else{
+                document.getElementById("indice").innerHTML="<font color='red'><b>Cadena vacía</b></font>";
+                }
+            }
+
+    </script>
+</body>
+</html>
