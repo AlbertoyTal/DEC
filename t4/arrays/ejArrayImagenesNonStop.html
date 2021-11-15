@@ -8,7 +8,7 @@
 </head>
 <body style="text-align: center;">
     <input type="text" id="nombreFoto"/>
-    <input type="button" id ="añadir" onclick="añadir()" value="Añadir"/><br/><br/>
+    <input type="button" id ="aniadir" onclick="aniadir()" value="Añadir"/><br/><br/>
     <div id="imagen" style=" width:100px; height: 75px; margin:auto" ><img src="" id="rutaImagen" style="width:100px; height:75px;"/></div>
     <b>Indice:</b> <div id="indice"></div>
     <input type="button" id="iniciar" value="Iniciar" onclick="iniciar()"/>
@@ -27,11 +27,15 @@
                 stop = setInterval("siguiente()",1000);
                 document.getElementById("iniciar").disabled=true;
                 document.getElementById("parar").disabled=false;
+                document.getElementById("nombreFoto").disabled=true;
+                document.getElementById("aniadir").disabled=true;
             }
             function parar(){
                 clearInterval(stop);
                 document.getElementById("parar").disabled=true;
                 document.getElementById("iniciar").disabled=false;
+                document.getElementById("nombreFoto").disabled=false;
+                document.getElementById("aniadir").disabled=false;
             }
             
 
@@ -45,6 +49,21 @@
                     indice+=1;
                     document.getElementById("rutaImagen").src = arrayImg[indice];
                     document.getElementById("indice").innerHTML=indice;
+                }
+            }
+            function aniadir(){ 
+                var nombre = document.getElementById("nombreFoto").value;
+                nombre = nombre.trim();
+                var arrayImgAux = ("puente,montañas");
+                if(nombre!=""  && arrayImgAux.indexOf(nombre)>=0){
+                arrayImg.push("imagenes/"+nombre+".jpg");
+                indice = arrayImg.length-1;
+                document.getElementById("rutaImagen").src = arrayImg[indice];
+                document.getElementById("indice").innerHTML=indice;
+                }
+                else{
+                    
+                document.getElementById("indice").innerHTML="<font color='red'><b>Cadena no válida</b></font>";
                 }
             }
 
