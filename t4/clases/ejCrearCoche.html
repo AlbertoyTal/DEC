@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear coche</title>
+</head>
+<body>
+    Introduce nombre de coche <input type="text" id="nombre"/>
+    <br/>
+    <input type="button" onclick="aniadirCoches()" value="Añadir" />
+    <div id="miDiv"></div>
+    <script>
+        class Car{
+            constructor(marca){
+                this.nombre = marca;
+            }
+           /* get nombre(){
+                return this._nombre;
+            }*/
+
+        }
+        var coches = [];
+        function aniadirCoches(){
+            var nombre = document.getElementById("nombre").value;
+            var coche = new Car(nombre);
+            coches.push(coche);
+            mostrarCoches();
+        }
+        
+        function mostrarCoches(){
+            var texto = "";
+            for(a of coches){
+                texto += a.nombre+"<br/>";
+            }
+            document.getElementById("miDiv").innerHTML=texto;
+        }
+    </script>
+</body>
+</html>
