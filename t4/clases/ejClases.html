@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ej Humanos</title>
 </head>
 <body>
+    Introduce edad <input type="number" id="edad"/><br/>
+    Introduce peso <input type="number" id="peso"/><br/>
+    <input type="button" onclick="aniadirH()" value="Añadir persona"/><br/>
+    <input type="button" onclick="mostrarH()" value="Mostrar todos"/><br/>
+    <input type="button" onclick="mostrarD()" value="Mostrar Datos"/><br/>
+    <div id="listaH"></div>
     <script>
         class Humano{
             constructor(anios,kg){
@@ -19,7 +25,60 @@
             get peso(){
                 return this._peso;
             }
+            set edad(x){
+                this._edad = x;
+            }
+            set peso(x){
+                this._peso = x;
+            }
+            comer(){
+                this._peso = this._peso+1;
+            }
+            correr(){
+                this.peso = this._peso-1;
+            }
+            muestraUndato(){
+               return document.getElementById("listaH").innerHTML =  "Peso = "+this._peso+"------ Edad = "+this._edad;
+            }
+            static mostrarDatos(...personas){
+                var texto = "";
+                for(var humano of personas){
+                    texto+="Edad = "+humano.edad+"------ Peso = "+humano.peso;
+                }
+                return texto;
+            }
+           
         }
+        var humanos = [];
+        function aniadirH(){
+            var edad = document.getElementById("edad").value;
+            var peso = document.getElementById("peso").value;
+            humanos.push(new Humano(edad,peso));
+        }
+        function mostrarH(){
+            var texto = "";
+            for(h of humanos){
+                texto+= h.muestraUndato()+"<br/>";
+            }
+            document.getElementById("listaH").innerHTML = texto;
+        }
+        function correr(){
+            //falta indicar que humano en concreto
+           // Humano.correr;
+            //document.getElementById().innerHTML = Humano.peso;
+        }
+        function comer(){
+            //falta indicar que humano en concreto
+            //Humano.comer;
+            
+        //document.getElementById().innerHTML = Humano.peso;
+        }
+        function mostrarD (){
+            document.getElementById("listaH").innerHTML = Humano.mostrarDatos(humanos[0]);
+        }
+       /* humanos[0] = new Humano(50,80);
+        document.getElementById("listaH").innerHTML = humanos[0].muestraUndato();
+        */
     </script>
 </body>
 </html>
