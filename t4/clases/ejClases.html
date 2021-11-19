@@ -7,6 +7,15 @@
     <title>Ej Humanos</title>
 </head>
 <body>
+    Edad: <input type="text" id="mEdad" disabled="disabled"/><br/>
+    Peso: <input type="text" id="mPeso" disabled="disabled"/><br/>
+    <input type="button" id ="p" onclick="principio()" value="|<<"/>
+    <input type="button" id ="a" onclick="anterior()" value="<"/>
+    <input type="button" id ="s" onclick="siguiente()" value=">"/>
+    <input type="button" id ="f" onclick="final()" value=">>|"/><br/><br/>
+    <input type="button" id="pComer" onclick="personaCome()" value="Comer"/>
+    <input type="button" id="pCorrer" onclick="personaCorre()" value="Correr"/><br/><br/>
+
     Introduce edad <input type="number" id="edad"/><br/>
     Introduce peso <input type="number" id="peso"/><br/>
     <input type="button" onclick="aniadirH()" value="Añadir persona"/><br/>
@@ -38,7 +47,7 @@
                 this.peso = this._peso-1;
             }
             muestraUndato(){
-               return document.getElementById("listaH").innerHTML =  "Peso = "+this._peso+"------ Edad = "+this._edad;
+               return document.getElementById("listaH").innerHTML =  "Edad = "+this.edad+"------ Peso = "+this.peso;
             }
             static mostrarDatos(...personas){
                 var texto = "";
@@ -50,11 +59,64 @@
            
         }
         var humanos = [];
+        var indice = 0;
         function aniadirH(){
             var edad = document.getElementById("edad").value;
             var peso = document.getElementById("peso").value;
             humanos.push(new Humano(edad,peso));
+            document.getElementById("mEdad").value=humanos[indice].edad;
+            document.getElementById("mPeso").value=humanos[indice].peso;
         }
+        function principio(){
+                indice = 0;
+                document.getElementById("mEdad").value=humanos[indice].edad;
+                document.getElementById("mPeso").value=humanos[indice].peso;
+                
+            }
+
+            function anterior(){
+                if(indice == 0){     
+                    indice = humanos.length-1;
+                    document.getElementById("mEdad").value=humanos[indice].edad;
+                    document.getElementById("mPeso").value=humanos[indice].peso;
+                    
+                }
+                else{
+                    indice--;
+                    document.getElementById("mEdad").value=humanos[indice].edad;
+                    document.getElementById("mPeso").value=humanos[indice].peso;
+                    
+                }   
+            }
+
+            function siguiente(){
+                if(indice == humanos.length-1){
+                    indice = 0;
+                    document.getElementById("mEdad").value=humanos[indice].edad;
+                    document.getElementById("mPeso").value=humanos[indice].peso; 
+                    
+                }
+                else{
+                    indice++;
+                    document.getElementById("mEdad").value=humanos[indice].edad;
+                    document.getElementById("mPeso").value=humanos[indice].peso;
+                    
+                }
+            }
+            
+            function final(){
+                indice = humanos.length-1;
+                document.getElementById("mEdad").value=humanos[indice].edad;
+                document.getElementById("mPeso").value=humanos[indice].peso;
+                
+            }
+            function personaCome(){
+                
+            }
+            function personaCorre(){
+
+            }
+
         function mostrarH(){
             var texto = "";
             for(h of humanos){
@@ -74,7 +136,7 @@
         //document.getElementById().innerHTML = Humano.peso;
         }
         function mostrarD (){
-            document.getElementById("listaH").innerHTML = Humano.mostrarDatos(humanos[0]);
+            document.getElementById("listaH").innerHTML = Humano.mostrarDatos(humanos[indice]);
         }
        /* humanos[0] = new Humano(50,80);
         document.getElementById("listaH").innerHTML = humanos[0].muestraUndato();
