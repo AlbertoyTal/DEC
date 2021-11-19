@@ -20,7 +20,8 @@
     Introduce peso <input type="number" id="peso"/><br/>
     <input type="button" onclick="aniadirH()" value="Añadir persona"/><br/>
     <input type="button" onclick="mostrarH()" value="Mostrar todos"/><br/>
-    <input type="button" onclick="mostrarD()" value="Mostrar Datos"/><br/>
+    <input type="button" onclick="mostrarD()" value="Mostrar Datos"/><br/><br/>
+    <input type="button" onclick="abrirVH()" value="Mostrar humanos"/><br/>
     <div id="listaH"></div>
     <script>
         class Humano{
@@ -41,10 +42,10 @@
                 this._peso = x;
             }
             comer(){
-                this._peso = this._peso+1;
+                this._peso = parseInt(this._peso)+1;
             }
             correr(){
-                this.peso = this._peso-1;
+                this.peso = parseInt(this._peso)-1;
             }
             muestraUndato(){
                return document.getElementById("listaH").innerHTML =  "Edad = "+this.edad+"------ Peso = "+this.peso;
@@ -111,10 +112,14 @@
                 
             }
             function personaCome(){
-                
+                humanos[indice].comer();
+                document.getElementById("mEdad").value=humanos[indice].edad;
+                document.getElementById("mPeso").value=humanos[indice].peso;
             }
             function personaCorre(){
-
+                humanos[indice].correr();
+                document.getElementById("mEdad").value=humanos[indice].edad;
+                document.getElementById("mPeso").value=humanos[indice].peso;
             }
 
         function mostrarH(){
@@ -124,23 +129,23 @@
             }
             document.getElementById("listaH").innerHTML = texto;
         }
-        function correr(){
-            //falta indicar que humano en concreto
-           // Humano.correr;
-            //document.getElementById().innerHTML = Humano.peso;
-        }
-        function comer(){
-            //falta indicar que humano en concreto
-            //Humano.comer;
-            
-        //document.getElementById().innerHTML = Humano.peso;
-        }
         function mostrarD (){
             document.getElementById("listaH").innerHTML = Humano.mostrarDatos(humanos[indice]);
         }
-       /* humanos[0] = new Humano(50,80);
-        document.getElementById("listaH").innerHTML = humanos[0].muestraUndato();
-        */
+
+        function abrirVH(){
+            var miVentana = window.open("","mostrarHumanos","height=400,width=300,top=150,left=150")
+            miVentana.document.open();
+            miVentana.document.write("<table border='1'>");
+            miVentana.document.write("<tr><th>Edad</th><th>Peso</th></tr>");
+            for(persona of humanos){
+            miVentana.document.write("<tr><td>"+persona.edad+"</td><td>"+persona.peso+"</td></tr>");
+            }
+            miVentana.document.write("</table>");
+            miVentana.document.write("<input type='button' onclick='window.close()' value='Cerrar'/> ")
+            miVentana.document.close();
+        }
+
     </script>
 </body>
 </html>
