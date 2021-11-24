@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personas</title>
+</head>
+<body>
+    <input type="button" onclick="mostrarEdad()" value="Mostrar Edad"/>
+    <div id="edad"></div>
+    <script>
+        class Persona{
+            constructor(nombre,apellidos,direccion,fN,genero,cP){
+                this._nombre = nombre;
+                this._apellidos = apellidos;
+                this._direccion = direccion;
+                this._fechaNac = fN;
+                this._genero = genero;
+                this._codigoP = cP;
+            }
+            get nombre(){
+                return this._nombre;
+            }
+            get apellidos(){
+                return this._apellidos;
+            }
+            get direccion(){
+                return this._direccion;
+            }
+            get fechaNac(){
+                return this._fechaNac;
+            }
+            get genero(){
+                return this._genero;
+            }
+            get codigoP(){
+                return this._codigoP;
+            }            
+            set nombre(x){
+                this._nombre = x;
+            }
+            set apellidos(x){
+                this._apellidos = x;
+            }
+            set direccion(x){
+                this._direccion = x;
+            }
+            set fechaNac(x){
+                this._fechaNac = x;
+            }
+            set genero(x){
+                this._genero = x;
+            }
+            set codigoP(x){
+                this._codigoP = x;
+            }
+            edad(){
+                var sistema=new Date();
+	            var nac = new Date(this.fechaNac.getFullYear(),this.fechaNac.getMonth()-1,this.fechaNac.getDate());
+	            var edad = 0;
+	            edad = sistema.getFullYear()-nac.getFullYear();
+                if(nac.getMonth()==sistema.getMonth()){
+                    if(nac.getDate()>sistema.getDate()){
+                        edad--;
+                    }
+	            }
+	            else if(nac.getMonth()>sistema.getMonth()){
+	                edad--;
+	            }
+                return edad;
+            }
+            prefijo(){
+                var prefijo = "";
+                if(this.genero=="Masculino"){
+                    prefijo = "Sr";
+                }
+                else{
+                    prefijo = "Sra";
+                }
+                return prefijo;
+            }
+            listarPersona(){
+                var salida = "";
+                salida = "<b>Nombre:</b> "+this.prefijo()+" "+this.nombre+"<br/><b>Apellidos:</b> "+this.apellidos+"<br/><b>Direccion:</b> "+this.direccion+"<br/><b>Fecha de nacimiento:</b> "+this.fechaNac.getDate()+"/"+this.fechaNac.getMonth()+"/"+this.fechaNac.getFullYear()+"<br/><b>Edad:</b> "+this.edad();
+                return salida;
+            }
+        }
+        var arrPersonas = new Array();
+        arrPersonas[0] = new Persona("Alejandro","Asensio Alvarez","Calle nombrada",new Date(2002,11,23),"Masculino",28891);
+        function mostrarEdad(){
+            document.getElementById("edad").innerHTML = arrPersonas[0].listarPersona();
+        }
+        
+
+    </script>
+</body>
+</html>

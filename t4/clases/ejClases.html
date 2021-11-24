@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Ej Humanos</title>
+    <title>Ej arrHumanos</title>
 </head>
 <body>
     Edad: <input type="text" id="mEdad" disabled="disabled"/><br/>
@@ -21,7 +21,7 @@
     <input type="button" onclick="aniadirH()" value="Añadir persona"/><br/>
     <input type="button" onclick="mostrarH()" value="Mostrar todos"/><br/>
     <input type="button" onclick="mostrarD()" value="Mostrar Datos"/><br/><br/>
-    <input type="button" onclick="abrirVH()" value="Mostrar humanos"/><br/>
+    <input type="button" onclick="abrirVH()" value="Mostrar Humanos"/><br/>
     <div id="listaH"></div>
     <script>
         class Humano{
@@ -59,86 +59,86 @@
             }
            
         }
-        var humanos = [];
+        var arrHumanos = [];
         var indice = 0;
         function aniadirH(){
             var edad = document.getElementById("edad").value;
             var peso = document.getElementById("peso").value;
-            humanos.push(new Humano(edad,peso));
-            document.getElementById("mEdad").value=humanos[indice].edad;
-            document.getElementById("mPeso").value=humanos[indice].peso;
+            arrHumanos.push(new Humano(edad,peso));
+            document.getElementById("mEdad").value=arrHumanos[indice].edad;
+            document.getElementById("mPeso").value=arrHumanos[indice].peso;
         }
         function principio(){
                 indice = 0;
-                document.getElementById("mEdad").value=humanos[indice].edad;
-                document.getElementById("mPeso").value=humanos[indice].peso;
+                document.getElementById("mEdad").value=arrHumanos[indice].edad;
+                document.getElementById("mPeso").value=arrHumanos[indice].peso;
                 
             }
 
             function anterior(){
                 if(indice == 0){     
-                    indice = humanos.length-1;
-                    document.getElementById("mEdad").value=humanos[indice].edad;
-                    document.getElementById("mPeso").value=humanos[indice].peso;
+                    indice = arrHumanos.length-1;
+                    document.getElementById("mEdad").value=arrHumanos[indice].edad;
+                    document.getElementById("mPeso").value=arrHumanos[indice].peso;
                     
                 }
                 else{
                     indice--;
-                    document.getElementById("mEdad").value=humanos[indice].edad;
-                    document.getElementById("mPeso").value=humanos[indice].peso;
+                    document.getElementById("mEdad").value=arrHumanos[indice].edad;
+                    document.getElementById("mPeso").value=arrHumanos[indice].peso;
                     
                 }   
             }
 
             function siguiente(){
-                if(indice == humanos.length-1){
+                if(indice == arrHumanos.length-1){
                     indice = 0;
-                    document.getElementById("mEdad").value=humanos[indice].edad;
-                    document.getElementById("mPeso").value=humanos[indice].peso; 
+                    document.getElementById("mEdad").value=arrHumanos[indice].edad;
+                    document.getElementById("mPeso").value=arrHumanos[indice].peso; 
                     
                 }
                 else{
                     indice++;
-                    document.getElementById("mEdad").value=humanos[indice].edad;
-                    document.getElementById("mPeso").value=humanos[indice].peso;
+                    document.getElementById("mEdad").value=arrHumanos[indice].edad;
+                    document.getElementById("mPeso").value=arrHumanos[indice].peso;
                     
                 }
             }
             
             function final(){
-                indice = humanos.length-1;
-                document.getElementById("mEdad").value=humanos[indice].edad;
-                document.getElementById("mPeso").value=humanos[indice].peso;
+                indice = arrHumanos.length-1;
+                document.getElementById("mEdad").value=arrHumanos[indice].edad;
+                document.getElementById("mPeso").value=arrHumanos[indice].peso;
                 
             }
             function personaCome(){
-                humanos[indice].comer();
-                document.getElementById("mEdad").value=humanos[indice].edad;
-                document.getElementById("mPeso").value=humanos[indice].peso;
+                arrHumanos[indice].comer();
+                document.getElementById("mEdad").value=arrHumanos[indice].edad;
+                document.getElementById("mPeso").value=arrHumanos[indice].peso;
             }
             function personaCorre(){
-                humanos[indice].correr();
-                document.getElementById("mEdad").value=humanos[indice].edad;
-                document.getElementById("mPeso").value=humanos[indice].peso;
+                arrHumanos[indice].correr();
+                document.getElementById("mEdad").value=arrHumanos[indice].edad;
+                document.getElementById("mPeso").value=arrHumanos[indice].peso;
             }
 
         function mostrarH(){
             var texto = "";
-            for(h of humanos){
+            for(h of arrHumanos){
                 texto+= h.muestraUndato()+"<br/>";
             }
             document.getElementById("listaH").innerHTML = texto;
         }
         function mostrarD (){
-            document.getElementById("listaH").innerHTML = Humano.mostrarDatos(humanos[indice]);
+            document.getElementById("listaH").innerHTML = Humano.mostrarDatos(arrHumanos[indice]);
         }
 
         function abrirVH(){
-            var miVentana = window.open("","mostrarHumanos","height=400,width=300,top=150,left=150")
+            var miVentana = window.open("","mostrararHumanos","height=400,width=300,top=150,left=150")
             miVentana.document.open();
             miVentana.document.write("<table border='1'>");
             miVentana.document.write("<tr><th>Edad</th><th>Peso</th></tr>");
-            for(persona of humanos){
+            for(persona of arrHumanos){
             miVentana.document.write("<tr><td>"+persona.edad+"</td><td>"+persona.peso+"</td></tr>");
             }
             miVentana.document.write("</table>");
