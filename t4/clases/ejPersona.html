@@ -21,8 +21,8 @@
     <input type="button" id="aP" onclick="alta()" value="Alta"/>
     <input type="button" id="mP" onclick="modificar()" value="Modificar"/>
     <input type="button" id="bP" onclick="baja()" value="Baja"/><br/><br/>
-    <input type="button" onclick="mostrarTablaP()" value="Mostrar Todas las Personas"/>
-    <input type="button" onclick="mostrarP()" value="Mostrar datos"/>
+    <input type="button" id="tabla" onclick="mostrarTablaP()" value="Mostrar Todas las Personas"/>
+    <input type="button" id="mU" onclick="mostrarP()" value="Mostrar datos"/>
     <div id="datosP"></div>
     <script>
         class Persona{
@@ -205,8 +205,78 @@
             Persona.mostrarPersonas(arrPersonas);
         }
         
+        function deshabilitar(){
+            document.getElementById("mN").value = "";
+        document.getElementById("mA").value = "";
+        document.getElementById("mD").value = "";
+        document.getElementById("mF").value = "";
+        document.getElementById("mE").value = "";
+        document.getElementById("mG").value = "";
+        document.getElementById("mCP").value = "";
+
+        document.getElementById("p").disabled = true;
+        document.getElementById("a").disabled = true;
+        document.getElementById("s").disabled = true;
+        document.getElementById("f").disabled = true;
+
+        document.getElementById("tabla").disabled = true;
+        document.getElementById("mU").disabled = true;
+
+        document.getElementById("mN").disabled = false;
+        document.getElementById("mA").disabled = false;
+        document.getElementById("mD").disabled = false;
+        document.getElementById("mF").disabled = false;
+        document.getElementById("mE").disabled = false;
+        document.getElementById("mG").disabled = false;
+        document.getElementById("mCP").disabled = false;
+        
+        
+
+        document.getElementById("aP").disabled = true;
+        document.getElementById("mP").disabled = true;
+        document.getElementById("bP").disabled = true;
+        }
+        
+        function validar(){
+            var nombre = document.getElementById("mN").value;
+            var apellidos = document.getElementById("mA").value;
+            var direccion = document.getElementById("mD").value;
+            var fN = document.getElementById("mF").value;
+            var genero = document.getElementById("mG").value;
+            var cP = document.getElementById("mCP").value;
+            var permitidos = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnÑñOoPpQqRrSsTtUuVvWwXxYyZzÁáÉéÍíÓóÚúçÇ ";
+
+            var nCon = true;
+            var aCon = true;
+            var dCon = true;
+            var fCon = true;
+            var gCon = true;
+            var cCon = true;
+
+            if(nombre.length>=3 && nombre.length<=20){
+                for(var i = 0; i<nombre.length; i++){
+                    if(permitidos.indexOf(nombre[i])!=-1){
+                        nCon = false;
+                    }
+                }
+            }
+            if(apellidos.length>=3 && apellidos.length<=20){
+                for(var i = 0; i<apellidos.length; i++){
+                    if(permitidos.indexOf(apellidos[i])!=-1){
+                        aCon = false;
+                    }
+                }
+            }
+
+        }
+
         function alta(){
+        deshabilitar();
+        validar();
             
+
+            
+
         }
 
     </script>
