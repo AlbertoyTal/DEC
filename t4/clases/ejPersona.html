@@ -23,7 +23,7 @@
     <input type="button" id="mP" onclick="modificar()" value="Modificar"/>
     <input type="button" id="bP" onclick="baja()" value="Baja"/><br/><br/>
     <input type="button" id="aceptar" onclick="validar()" value="Aceptar" disabled="disabled"/>
-    <input type="button" id="aceptar" onclick="cancelar()" value="Cancelar" disabled="disabled"/><br/><br/>
+    <input type="button" id="cancelar" onclick="cancelar()" value="Cancelar" disabled="disabled"/><br/><br/>
     <input type="button" id="tabla" onclick="mostrarTablaP()" value="Mostrar Todas las Personas"/>
     <input type="button" id="mU" onclick="mostrarP()" value="Mostrar datos"/>
     <div id="datosP"></div>
@@ -109,30 +109,32 @@
                 ventana.document.write('<table border="1">');
                 ventana.document.write('<tr><th>Nombre</th><th>Apellidos</th><th>Direccion</th><th>Fecha de nacimiento</th><th>Edad</th><th>Genero</th><th>Codigo Postal</th><tr>');
                 for(var persona of listaPersonas){
-                    ventana.document.write('<tr><td>'+persona.prefijo()+" "+persona.nombre+"</td><td>"+persona.apellidos+"</td><td>"+persona.direccion+"</td><td>"+persona.fechaNac.toDateString()+"</td><td>"+persona.edad()+"</td><td>"+persona.genero+"</td><td>"+persona.codigoP+"</td>");
+                    ventana.document.write('<tr><td>'+persona.prefijo()+" "+persona.nombre+"</td><td>"+persona.apellidos+"</td><td>"+persona.direccion+"</td><td>"+persona.fechaNac.getDate()+"/"+(persona.fechaNac.getMonth()+1)+"/"+persona.fechaNac.getFullYear()+"</td><td>"+persona.edad()+"</td><td>"+persona.genero+"</td><td>"+persona.codigoP+"</td>");
                 }
                 ventana.document.write('</table>');    
                 ventana.document.close();
             }
         }
         var arrPersonas = new Array();
-        arrPersonas[0] = new Persona("Alejandro","Asensio Alvarez","Calle nombrada",new Date(2002,11,26),"Masculino",28891);
+        arrPersonas[0] = new Persona("Alejandro","Asensio Alvarez","Calle nombrada",new Date(2002,6,15),"Masculino",28891);
         arrPersonas[1] = new Persona("Jorge","Asensio Alvarez","Calle de si",new Date(1997,4,29),"Masculino",28891);
         arrPersonas[2] = new Persona("Cristian","Chaparro Arteaga","Calle de cosas",new Date(1993,2,1),"Masculino",28840);
         var indice = 0;
-        document.getElementById("mN").value=arrPersonas[indice].prefijo()+" "+arrPersonas[indice].nombre;
-        document.getElementById("mA").value=arrPersonas[indice].apellidos;
-        document.getElementById("mD").value=arrPersonas[indice].direccion;
-        document.getElementById("mF").value=arrPersonas[indice].fechaNac.toDateString();
-        document.getElementById("mE").value=arrPersonas[indice].edad();
-        document.getElementById("mG").value=arrPersonas[indice].genero;
-        document.getElementById("mCP").value=arrPersonas[indice].codigoP;
+        var accion = "";
+        actual();
+        // document.getElementById("mN").value=arrPersonas[indice].prefijo()+" "+arrPersonas[indice].nombre;
+        // document.getElementById("mA").value=arrPersonas[indice].apellidos;
+        // document.getElementById("mD").value=arrPersonas[indice].direccion;
+        // document.getElementById("mF").value=arrPersonas[indice].fechaNac.getDate()+"/"+(arrPersonas[indice].fechaNac.getMonth()+1)+"/"+arrPersonas[indice].fechaNac.getFullYear();
+        // document.getElementById("mE").value=arrPersonas[indice].edad();
+        // document.getElementById("mG").value=arrPersonas[indice].genero;
+        // document.getElementById("mCP").value=arrPersonas[indice].codigoP;
         function principio(){
                 indice = 0;
                 document.getElementById("mN").value=arrPersonas[indice].prefijo()+" "+arrPersonas[indice].nombre;
                 document.getElementById("mA").value=arrPersonas[indice].apellidos;
                 document.getElementById("mD").value=arrPersonas[indice].direccion;
-                document.getElementById("mF").value=arrPersonas[indice].fechaNac.toDateString();
+                document.getElementById("mF").value=arrPersonas[indice].fechaNac.getDate()+"/"+(arrPersonas[indice].fechaNac.getMonth()+1)+"/"+arrPersonas[indice].fechaNac.getFullYear();
                 document.getElementById("mE").value=arrPersonas[indice].edad();
                 document.getElementById("mG").value=arrPersonas[indice].genero;
                 document.getElementById("mCP").value=arrPersonas[indice].codigoP;
@@ -146,7 +148,7 @@
                     document.getElementById("mN").value=arrPersonas[indice].prefijo()+" "+arrPersonas[indice].nombre;
                     document.getElementById("mA").value=arrPersonas[indice].apellidos;
                     document.getElementById("mD").value=arrPersonas[indice].direccion;
-                    document.getElementById("mF").value=arrPersonas[indice].fechaNac.toDateString();
+                    document.getElementById("mF").value=arrPersonas[indice].fechaNac.getDate()+"/"+(arrPersonas[indice].fechaNac.getMonth()+1)+"/"+arrPersonas[indice].fechaNac.getFullYear();
                     document.getElementById("mE").value=arrPersonas[indice].edad();
                     document.getElementById("mG").value=arrPersonas[indice].genero;
                     document.getElementById("mCP").value=arrPersonas[indice].codigoP;
@@ -157,7 +159,7 @@
                     document.getElementById("mN").value=arrPersonas[indice].prefijo()+" "+arrPersonas[indice].nombre;
                     document.getElementById("mA").value=arrPersonas[indice].apellidos;
                     document.getElementById("mD").value=arrPersonas[indice].direccion;
-                    document.getElementById("mF").value=arrPersonas[indice].fechaNac.toDateString();
+                    document.getElementById("mF").value=arrPersonas[indice].fechaNac.getDate()+"/"+(arrPersonas[indice].fechaNac.getMonth()+1)+"/"+arrPersonas[indice].fechaNac.getFullYear();
                     document.getElementById("mE").value=arrPersonas[indice].edad();
                     document.getElementById("mG").value=arrPersonas[indice].genero;
                     document.getElementById("mCP").value=arrPersonas[indice].codigoP;
@@ -171,7 +173,7 @@
                     document.getElementById("mN").value=arrPersonas[indice].prefijo()+" "+arrPersonas[indice].nombre;
                     document.getElementById("mA").value=arrPersonas[indice].apellidos;
                     document.getElementById("mD").value=arrPersonas[indice].direccion;
-                    document.getElementById("mF").value=arrPersonas[indice].fechaNac.toDateString();
+                    document.getElementById("mF").value=arrPersonas[indice].fechaNac.getDate()+"/"+(arrPersonas[indice].fechaNac.getMonth()+1)+"/"+arrPersonas[indice].fechaNac.getFullYear();
                     document.getElementById("mE").value=arrPersonas[indice].edad();
                     document.getElementById("mG").value=arrPersonas[indice].genero;
                     document.getElementById("mCP").value=arrPersonas[indice].codigoP;
@@ -182,7 +184,7 @@
                     document.getElementById("mN").value=arrPersonas[indice].prefijo()+" "+arrPersonas[indice].nombre;
                     document.getElementById("mA").value=arrPersonas[indice].apellidos;
                     document.getElementById("mD").value=arrPersonas[indice].direccion;
-                    document.getElementById("mF").value=arrPersonas[indice].fechaNac.toDateString();
+                    document.getElementById("mF").value=arrPersonas[indice].fechaNac.getDate()+"/"+(arrPersonas[indice].fechaNac.getMonth()+1)+"/"+arrPersonas[indice].fechaNac.getFullYear();
                     document.getElementById("mE").value=arrPersonas[indice].edad();
                     document.getElementById("mG").value=arrPersonas[indice].genero;
                     document.getElementById("mCP").value=arrPersonas[indice].codigoP;
@@ -195,12 +197,24 @@
                 document.getElementById("mN").value=arrPersonas[indice].prefijo()+" "+arrPersonas[indice].nombre;
                 document.getElementById("mA").value=arrPersonas[indice].apellidos;
                 document.getElementById("mD").value=arrPersonas[indice].direccion;
-                document.getElementById("mF").value=arrPersonas[indice].fechaNac.toDateString();
+                document.getElementById("mF").value=arrPersonas[indice].fechaNac.getDate()+"/"+(arrPersonas[indice].fechaNac.getMonth()+1)+"/"+arrPersonas[indice].fechaNac.getFullYear();;
                 document.getElementById("mE").value=arrPersonas[indice].edad();
                 document.getElementById("mG").value=arrPersonas[indice].genero;
                 document.getElementById("mCP").value=arrPersonas[indice].codigoP;
                 
             }
+
+            function actual(){
+                document.getElementById("mN").value=arrPersonas[indice].prefijo()+" "+arrPersonas[indice].nombre;
+                document.getElementById("mA").value=arrPersonas[indice].apellidos;
+                document.getElementById("mD").value=arrPersonas[indice].direccion;
+                document.getElementById("mF").value=arrPersonas[indice].fechaNac.getDate()+"/"+(arrPersonas[indice].fechaNac.getMonth()+1)+"/"+arrPersonas[indice].fechaNac.getFullYear();;
+                document.getElementById("mE").value=arrPersonas[indice].edad();
+                document.getElementById("mG").value=arrPersonas[indice].genero;
+                document.getElementById("mCP").value=arrPersonas[indice].codigoP;
+                
+            }
+
         function mostrarP(){
             document.getElementById("datosP").innerHTML = arrPersonas[indice].listarPersona();
         }
@@ -371,9 +385,38 @@
                 mensaje += "El código postal no es válido\n";
             }
             if(nCon && aCon && dCon && fCon && gCon && cCon){
+                if(accion == "alta"){
                arrPersonas.push(new Persona(nombre,apellidos,direccion,fechaN,genero,cP));
                habilitar();
+               document.getElementById("aceptar").disabled=true;
+                document.getElementById("cancelar").disabled=true;
                final();
+                }
+                else if(accion == "mod"){
+                //     nombre = nombre.split(" ");
+                //     if(nombre[0] == "Sr" || nombre[0] == "Sra"){
+                //     nombre = nombre.slice(1);
+                //     nombre = nombre.join(" ");
+                // }
+                // else{
+                //     nombre = nombre.join(" ");
+                // }
+
+                    var resp = confirm("Estas seguro que quieres modificar a la persona numero "+(indice+1)+"\nNombre: "+arrPersonas[indice].nombre);
+                    if(resp){
+                        arrPersonas[indice].nombre = nombre;
+                        arrPersonas[indice].apellidos = apellidos;
+                        arrPersonas[indice].direccion = direccion;
+                        arrPersonas[indice].fechaNac = fechaN;
+                        arrPersonas[indice].genero = genero;
+                        arrPersonas[indice].codigoP = cP;
+                        habilitar();
+                        actual();
+                        document.getElementById("aceptar").disabled=true;
+                        document.getElementById("cancelar").disabled=true;
+                        
+            }
+                }
             }
             else{
                 alert(mensaje);
@@ -383,9 +426,89 @@
 
         function alta(){
         deshabilitar();
+        accion = "alta";
         document.getElementById("aceptar").disabled=false;
+        document.getElementById("cancelar").disabled=false;
         }
 
+        function modificar(){
+            document.getElementById("p").disabled = true;
+        document.getElementById("a").disabled = true;
+        document.getElementById("s").disabled = true;
+        document.getElementById("f").disabled = true;
+
+        document.getElementById("tabla").disabled = true;
+        document.getElementById("mU").disabled = true;
+
+        document.getElementById("mN").disabled = false;
+        document.getElementById("mA").disabled = false;
+        document.getElementById("mD").disabled = false;
+        document.getElementById("mF").disabled = false;
+        
+        document.getElementById("mG").disabled = false;
+        document.getElementById("mCP").disabled = false;
+        
+        
+
+        document.getElementById("aP").disabled = true;
+        document.getElementById("mP").disabled = true;
+        document.getElementById("bP").disabled = true;
+            
+            accion = "mod";
+        document.getElementById("aceptar").disabled=false;
+        document.getElementById("cancelar").disabled=false;
+        var nombre = document.getElementById("mN").value;
+        nombre = nombre.split(" ");
+        nombre = nombre.slice(1);
+        nombre = nombre.join(" ");
+        document.getElementById("mN").value = nombre;
+        
+
+            
+            
+        }
+
+        function baja(){
+            var resp = confirm("Estas seguro que quieres borrar a la persona numero "+(indice+1)+"\nNombre: "+arrPersonas[indice].nombre);
+            if(resp){
+                arrPersonas.splice(indice,1);
+                
+            }
+            if(arrPersonas.length>0){
+            indice == 0? indice=0 : indice--;    
+            
+            actual();
+            }
+            else{
+                    document.getElementById("mN").value="No existe ninguna persona";
+                    document.getElementById("mA").value="No existe ninguna persona";
+                    document.getElementById("mD").value="No existe ninguna persona";
+                    document.getElementById("mF").value="No existe ninguna persona";
+                    document.getElementById("mE").value="No existe ninguna persona";
+                    document.getElementById("mG").value="No existe ninguna persona";
+                    document.getElementById("mCP").value="No existe ninguna persona";
+                    
+
+                    document.getElementById("p").disabled = true;
+                    document.getElementById("a").disabled = true;
+                    document.getElementById("s").disabled = true;
+                    document.getElementById("f").disabled = true;
+                    document.getElementById("tabla").disabled = true;
+                    document.getElementById("mU").disabled = true;
+                    document.getElementById("mP").disabled = true;
+                    document.getElementById("bP").disabled = true;
+            }   
+            
+        }
+
+        function cancelar(){
+            actual();
+            habilitar();
+            document.getElementById("aceptar").disabled=true;
+            document.getElementById("cancelar").disabled=true;
+        }
+        
+        
     </script>
 </body>
 </html>
