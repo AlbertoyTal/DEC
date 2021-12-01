@@ -10,17 +10,20 @@
     Nombre: <input type="text" id="mN" disabled="disabled"/><br/>
     Apellidos: <input type="text" id="mA" disabled="disabled"/><br/>
     Direccion: <input type="text" id="mD" disabled="disabled"/><br/>
-    Fecha de nacimiento: <input type="text" id="mF" disabled="disabled"/><br/>
+    Fecha de nacimiento: <input type="text" id="mF" disabled="disabled" placeholder="dd/mm/aaaa"/><br/>
     Edad: <input type="text" id="mE" disabled="disabled"/><br/>
-    Genero: <input type="text" id="mG" disabled="disabled"/><br/>
+    Genero: <input type="text" id="mG" disabled="disabled" placeholder="Masculino/Femenino"/><br/>
     Codigo Postal: <input type="text" id="mCP" disabled="disabled"/><br/>
     <input type="button" id ="p" onclick="principio()" value="|<<"/>
     <input type="button" id ="a" onclick="anterior()" value="<"/>
     <input type="button" id ="s" onclick="siguiente()" value=">"/>
     <input type="button" id ="f" onclick="final()" value=">>|"/><br/><br/>
     <input type="button" id="aP" onclick="alta()" value="Alta"/>
+    
     <input type="button" id="mP" onclick="modificar()" value="Modificar"/>
     <input type="button" id="bP" onclick="baja()" value="Baja"/><br/><br/>
+    <input type="button" id="aceptar" onclick="validar()" value="Aceptar" disabled="disabled"/>
+    <input type="button" id="aceptar" onclick="cancelar()" value="Cancelar" disabled="disabled"/><br/><br/>
     <input type="button" id="tabla" onclick="mostrarTablaP()" value="Mostrar Todas las Personas"/>
     <input type="button" id="mU" onclick="mostrarP()" value="Mostrar datos"/>
     <div id="datosP"></div>
@@ -226,7 +229,7 @@
         document.getElementById("mA").disabled = false;
         document.getElementById("mD").disabled = false;
         document.getElementById("mF").disabled = false;
-        document.getElementById("mE").disabled = false;
+        
         document.getElementById("mG").disabled = false;
         document.getElementById("mCP").disabled = false;
         
@@ -236,15 +239,38 @@
         document.getElementById("mP").disabled = true;
         document.getElementById("bP").disabled = true;
         }
+        function habilitar(){
+            document.getElementById("p").disabled = false;
+        document.getElementById("a").disabled = false;
+        document.getElementById("s").disabled = false;
+        document.getElementById("f").disabled = false;
+
+        document.getElementById("tabla").disabled = false;
+        document.getElementById("mU").disabled = false;
+
+        document.getElementById("mN").disabled = true;
+        document.getElementById("mA").disabled = true;
+        document.getElementById("mD").disabled = true;
+        document.getElementById("mF").disabled = true;
         
+        document.getElementById("mG").disabled = true;
+        document.getElementById("mCP").disabled = true;
+        
+        
+
+        document.getElementById("aP").disabled = false;
+        document.getElementById("mP").disabled = false;
+        document.getElementById("bP").disabled = false;
+        }
         function validar(){
             var nombre = document.getElementById("mN").value;
             var apellidos = document.getElementById("mA").value;
             var direccion = document.getElementById("mD").value;
-            var fN = document.getElementById("mF").value;
+           
             var genero = document.getElementById("mG").value;
             var cP = document.getElementById("mCP").value;
             var permitidos = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnÑñOoPpQqRrSsTtUuVvWwXxYyZzÁáÉéÍíÓóÚúçÇ ";
+            var permitidosD = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnÑñOoPpQqRrSsTtUuVvWwXxYyZzÁáÉéÍíÓóÚúçÇ1234567890 ";
 
             var nCon = true;
             var aCon = true;
@@ -252,31 +278,112 @@
             var fCon = true;
             var gCon = true;
             var cCon = true;
-
+            var mensaje = "";
+            //--------------------------------------------
             if(nombre.length>=3 && nombre.length<=20){
                 for(var i = 0; i<nombre.length; i++){
-                    if(permitidos.indexOf(nombre[i])!=-1){
+                    if(permitidos.indexOf(nombre[i])==-1){
                         nCon = false;
                     }
                 }
             }
-            if(apellidos.length>=3 && apellidos.length<=20){
+            else{
+                nCon = false;
+            }
+            if(!nCon){
+                mensaje += "El nombre no es válido\n";
+            }
+            //----------------------------------------------
+            if(apellidos.length>=3 && apellidos.length<=30){
                 for(var i = 0; i<apellidos.length; i++){
-                    if(permitidos.indexOf(apellidos[i])!=-1){
+                    if(permitidos.indexOf(apellidos[i])==-1){
                         aCon = false;
                     }
                 }
+            }
+            else{
+                aCon = false;
+            }
+            if(!aCon){
+                mensaje+= "Los apellidos no son válidos\n";
+            }
+            //-------------------------------------------------
+            if(direccion.length>=3 && direccion.length<=35){
+                for(var i = 0; i<direccion.length; i++){
+                    if(permitidosD.indexOf(direccion[i])==-1){
+                        dCon = false;
+                    }
+                }
+            }
+            else{
+                dCon = false;
+            }
+            if(!dCon){
+                mensaje += "La dirección no es válida\n";
+            }
+            //----------------------------------------------------
+            var fN = document.getElementById("mF").value;
+            fN = fN.split("/");
+
+            var dia = parseInt(fN[0]);
+            var mes = parseInt(fN[1]);
+            var anio = parseInt(fN[2]);
+
+            var fechaN = new Date(anio,(mes-1),dia);
+            var fS = new Date();
+            if(fechaN > fS){
+                fCon = false;
+            }
+            if(!fCon){
+                mensaje += "La fecha no es válida\n";
+            }
+            //-----------------------------
+            var genero = document.getElementById("mG").value;
+            genero = genero.trim();
+            
+
+            if((genero != "Masculino") && (genero !="Femenino")){    
+                gCon = false;
+            }
+            if(!gCon){
+                mensaje += "El género no es válido\n";
+            }
+            //-----------------------------------
+
+            var permitidosC = "0123456789";
+            cP = cP.trim();
+            
+            if(cP.length==5){
+                
+                for(var i = 0; i<cP.length; i++){
+                    
+                if(permitidosC.indexOf(cP[i])==-1){
+                    cCon = false;
+                    
+                }
+            }
+            
+            }
+            else{
+                cCon = false;
+            }
+            if(!cCon){
+                mensaje += "El código postal no es válido\n";
+            }
+            if(nCon && aCon && dCon && fCon && gCon && cCon){
+               arrPersonas.push(new Persona(nombre,apellidos,direccion,fechaN,genero,cP));
+               habilitar();
+               final();
+            }
+            else{
+                alert(mensaje);
             }
 
         }
 
         function alta(){
         deshabilitar();
-        validar();
-            
-
-            
-
+        document.getElementById("aceptar").disabled=false;
         }
 
     </script>
