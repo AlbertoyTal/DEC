@@ -100,7 +100,7 @@
             }
             listarPersona(){
                 var salida = "";
-                salida = "<b>Nombre:</b> "+this.prefijo()+" "+this.nombre+"<br/><b>Apellidos:</b> "+this.apellidos+"<br/><b>Direccion:</b> "+this.direccion+"<br/><b>Fecha de nacimiento:</b> "+this.fechaNac.getDate()+"/"+this.fechaNac.getMonth()+"/"+this.fechaNac.getFullYear()+"<br/><b>Edad:</b> "+this.edad()+"<br/><b>Genero:</b> "+this.genero+"<br/><b>Codigo Postal:</b> "+this.codigoP;
+                salida = "<b>Nombre:</b> "+this.prefijo()+" "+this.nombre+"<br/><b>Apellidos:</b> "+this.apellidos+"<br/><b>Direccion:</b> "+this.direccion+"<br/><b>Fecha de nacimiento:</b> "+this.fechaNac.getDate()+"/"+(this.fechaNac.getMonth()+1)+"/"+this.fechaNac.getFullYear()+"<br/><b>Edad:</b> "+this.edad()+"<br/><b>Genero:</b> "+this.genero+"<br/><b>Codigo Postal:</b> "+this.codigoP;
                 return salida;
             }
             static mostrarPersonas(listaPersonas){
@@ -502,10 +502,38 @@
         }
 
         function cancelar(){
+            if(arrPersonas.length>0){
+            indice == 0? indice=0 : indice--;    
+               
             actual();
             habilitar();
-            document.getElementById("aceptar").disabled=true;
-            document.getElementById("cancelar").disabled=true;
+            }
+            else{
+                    document.getElementById("mN").value="No existe ninguna persona";
+                    document.getElementById("mA").value="No existe ninguna persona";
+                    document.getElementById("mD").value="No existe ninguna persona";
+                    document.getElementById("mF").value="No existe ninguna persona";
+                    document.getElementById("mE").value="No existe ninguna persona";
+                    document.getElementById("mG").value="No existe ninguna persona";
+                    document.getElementById("mCP").value="No existe ninguna persona";
+                    
+
+                    document.getElementById("p").disabled = true;
+                    document.getElementById("a").disabled = true;
+                    document.getElementById("s").disabled = true;
+                    document.getElementById("f").disabled = true;
+                    document.getElementById("tabla").disabled = true;
+                    document.getElementById("mU").disabled = true;
+                    document.getElementById("mP").disabled = true;
+                    document.getElementById("bP").disabled = true;
+                    document.getElementById("aP").disabled = false;
+                    document.getElementById("aceptar").disabled=true;
+                    document.getElementById("cancelar").disabled=true;
+            }   
+            
+           
+            // document.getElementById("aceptar").disabled=true;
+            // document.getElementById("cancelar").disabled=true;
         }
         
         
