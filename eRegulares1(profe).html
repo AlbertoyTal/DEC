@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<head>
+  <title></title>
+    <meta charset=”UTF-8" /> 
+<script>
+window.onload=function(){
+document.getElementById("miBoton").onclick= valida;
+}
+function valida(){
+   var elTexto = document.getElementById("miTexto").value;
+   var elTextoDecimal = document.getElementById("miTexto2").value;
+   var miExpresion = /^[6789][0-9]{8}$/;
+   var miExpresion2 = /^\d{2,3}\.[0-9]{2,4}$/;
+   if (miExpresion.test(elTexto)){
+      document.getElementById("mostrar").innerHTML="El teléfono es correcto";
+   } 
+    else {
+	document.getElementById("mostrar").innerHTML="El teléfono NO es correcto";	
+	} 
+   if (miExpresion2.test(elTextoDecimal)){
+      document.getElementById("mostrar").innerHTML+="<br>El numero es correcto";
+   } 
+    else {
+	document.getElementById("mostrar").innerHTML+="<br>El numero NO es correcto";	
+	} 	
+}
+</script>
+ </head>
+<body >
+Introduzca texto para validar:<input type="text" id="miTexto"/><br>
+Introduzca un número decimal:<input type="text" id="miTexto2"/><br>
+<input type="button" value="Comprueba" id="miBoton"/>
+<div id="mostrar"></div>	
+</body>
+ 
+</html>
+
+
+
