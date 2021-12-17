@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con validacion</title>
+</head>
+<body>
+    <form action="../expresionesRegulares/ej2.html" name="formulario" onsubmit="return comprobar();">
+    Introduce nombre: 
+    <input type="text" id="nombre"/>
+    
+    Introduce hora: 
+    <input type="text" id="hora"/>
+
+    <input type="button" id="validar" value="Validar" onclick="comprobar()"/>
+    <input type="submit"/>
+    </form>
+    <script>
+        function comprobar(){
+
+       var nombre = document.getElementById("nombre").value;
+       var exNom = /^[A-ZÑÇÁÉÍÓÚ][a-zñçáéíóú-]{2}[a-zñçáéíóú-\s]{0,22}$/;
+
+       var hora = document.getElementById("hora").value;
+       var exHora = /^([01]\d|2[0-3]):([0-5]\d):([0-5][0-9])$/;
+
+       var okHora = false;
+       var okNom = false;
+       
+       var ok = false;
+
+       if(exNom.test(nombre)){
+        okNom = true;
+       }
+       else{
+        
+       }
+
+       if(exHora.test(hora)){
+        okHora = true;
+       }
+       else{
+       
+       }
+       if(okNom && okHora){
+        ok = true;
+    }
+        if(ok){
+            formulario.submit();
+        }
+        return ok;
+    }
+        
+
+        function a(){
+            return false;
+        }
+        </script>
+</body>
+</html>
