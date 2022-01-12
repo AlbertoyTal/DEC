@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validacion</title>
+</head>
+<body>
+
+<form name="formulario">
+    <label for="usuario">Usuario</label> <input type="text" name="usuario" id="usuario" onkeyup="estado()" onblur="estado()"/>
+    <br/><br/>
+    <label for="pwd">Clave</label> <input type="password" name="pwd" id="pwd" disabled="disabled"/>
+    <br/><br/>
+    <input type="button" name="boton" value="Validar" onclick="validar()" disabled="disabled"/>
+</form>
+
+<script>
+  var nIntentos = 0;
+    function validar(){
+        var uC = "usuario";
+        var cC = "usuario";
+        var clave = formulario.pwd.value;
+        var usuario = formulario.usuario.value;
+        var valido = false;
+        if(usuario!=uC || clave != cC){
+            nIntentos++;
+            valido = false;
+        }
+        else{
+            valido = true;
+        }
+        if(!valido){
+            alert("No valido\nNumero de intentos: "+nIntentos+"\nIntentos restantes: "+(3-nIntentos));
+        }
+        else{
+            formulario.action = "correcto.html";
+            formulario.target = "_blank";
+            formulario.method = "GET";
+            formulario.submit();
+        }
+        if(nIntentos == 3){
+            formulario.action = "error.html";
+            formulario.target = "_blank";
+            formulario.method = "POST";
+            formulario.submit();
+            nIntentos = 0;
+        }
+    }
+
+    function estado(){
+        var l = formulario.usuario.value.length;
+        if(l>0){
+            formulario.pwd.disabled = false;
+            formulario.boton.disabled = false;
+        }
+        else{
+            formulario.pwd.disabled = true;
+            formulario.boton.disabled = true;
+        }
+    }
+
+</script>
+</body>
+</html>
