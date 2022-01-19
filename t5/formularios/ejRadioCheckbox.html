@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="encuesta">
+    ¿Desea suscribirse a nuestro boletín de novedades?<br/>
+    <input type="radio" name="suscripcion" value="si" onclick="habilita()" id="si"/>
+    <label for="si">Si, quiero suscribirme</label>
+    <input type="radio" name="suscripcion" value="no" onclick="habilita()" checked="checked" id="no"/>
+    <label for="no">No, no quiero suscribirme</label>
+<br/>
+<br/>
+Seleccione sus temas de interés
+<br/>
+<input type="checkbox" name="temas[]" value="Pintura" disabled="disabled"id="p"/> <label for="p">Pintura</label><br/>
+<input type="checkbox" name="temas[]" value="Música" disabled="disabled"id="m"/> <label for="m">Música</label><br/>
+<input type="checkbox" name="temas[]" value="Teatro" disabled="disabled"id="t"/> <label for="t">Teatro</label><br/>
+<input type="checkbox" name="temas[]" value="Danza" disabled="disabled"id="d"/> <label for="d">Danza</label><br/>
+</form>
+<script>
+    function habilita(){
+        var temas = encuesta["temas[]"];
+         if(encuesta.suscripcion.value == "si") {
+            for(i in temas){
+                temas[i].disabled = false;
+            }
+         }
+         else{
+            for(i in temas){
+                temas[i].disabled = true;
+            }
+         }
+        
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambia Color</title>
+</head>
+<body>
+    <form name="colores">
+    <input type="radio" name="color1" value="blue" onclick="cambiaColorP(this.value)" id="az"/>
+    <label for="az">Azul</label>
+    <br/>
+    <input type="radio" name="color1" value="red" onclick="cambiaColorP(this.value)" id="r"/>
+    <label for="r">Rojo</label>
+    <br/>
+    <input type="radio" name="color1" value="yellow" onclick="cambiaColorP(this.value)" id="y"/>
+    <label for="y">Amarillo</label>
+    <br/>
+    <input type="radio" name="color1" value="purple" onclick="cambiaColorP(this.value)" id="p"/>
+    <label for="p">Morado</label>
+    <br/>
+    <input type="radio" name="color1" value="pink" onclick="cambiaColorP(this.value)" id="pi"/>
+    <label for="pi">Rosa</label>
+
+
+    <hr/>
+
+
+    <input type="radio" name="color2" value="black" onclick="cambiaColorS(this.value)" id="b"/>
+    <label for="b">Negro</label>
+    <br/>
+    <input type="radio" name="color2" value="brown" onclick="cambiaColorS(this.value)" id="br"/>
+    <label for="br">Marrón</label>
+    <br/>
+    <input type="radio" name="color2" value="orange" onclick="cambiaColorS(this.value)" id="o"/>
+    <label for="o">Naranja</label>
+    <br/>
+    <input type="radio" name="color2" value="grey" onclick="cambiaColorS(this.value)" id="g"/>
+    <label for="g">Gris</label>
+    <br/>
+    <input type="radio" name="color2" value="green" onclick="cambiaColorS(this.value)" id="gr"/>
+    <label for="gr">Verde</label>
+</form>
+
+    <hr/>
+
+    <div id="cuadro1" style="width:150px;height: 150px; border:1px solid black"></div>
+    <br/>
+    <div id="cuadro2" style="width:150px;height: 150px; border:1px solid black"></div>
+    <script>
+        function cambiaColorP(color){
+            document.getElementById("cuadro1").style.backgroundColor = color;
+        }
+        function cambiaColorS(color){
+            document.getElementById("cuadro2").style.backgroundColor = color;
+        }
+
+    </script>
+</body>
+</html>
