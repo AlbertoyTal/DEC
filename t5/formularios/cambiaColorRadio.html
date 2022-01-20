@@ -8,53 +8,51 @@
 </head>
 <body>
     <form name="colores">
-    <input type="radio" name="color1" value="blue" onclick="cambiaColorP(this.value)" id="az"/>
+    <input type="radio" name="color1" value="blue" onclick="cambiaColorP('uno',this.value)" id="az"/>
     <label for="az">Azul</label>
     <br/>
-    <input type="radio" name="color1" value="red" onclick="cambiaColorP(this.value)" id="r"/>
+    <input type="radio" name="color1" value="red"  checked onclick="cambiaColorP('uno',this.value)" id="r"/>
     <label for="r">Rojo</label>
     <br/>
-    <input type="radio" name="color1" value="yellow" onclick="cambiaColorP(this.value)" id="y"/>
+    <input type="radio" name="color1" value="yellow" onclick="cambiaColorP('uno',this.value)" id="y"/>
     <label for="y">Amarillo</label>
     <br/>
-    <input type="radio" name="color1" value="purple" onclick="cambiaColorP(this.value)" id="p"/>
+    <input type="radio" name="color1" value="purple" onclick="cambiaColorP('uno',this.value)" id="p"/>
     <label for="p">Morado</label>
     <br/>
-    <input type="radio" name="color1" value="pink" onclick="cambiaColorP(this.value)" id="pi"/>
+    <input type="radio" name="color1" value="pink" onclick="cambiaColorP('uno',this.value)" id="pi"/>
     <label for="pi">Rosa</label>
 
 
     <hr/>
 
 
-    <input type="radio" name="color2" value="black" onclick="cambiaColorS(this.value)" id="b"/>
+    <input type="radio" name="color2" value="black" onclick="cambiaColorP('dos',this.value)" id="b"/>
     <label for="b">Negro</label>
     <br/>
-    <input type="radio" name="color2" value="brown" onclick="cambiaColorS(this.value)" id="br"/>
+    <input type="radio" name="color2" value="brown" onclick="cambiaColorP('dos',this.value)" id="br"/>
     <label for="br">Marrón</label>
     <br/>
-    <input type="radio" name="color2" value="orange" onclick="cambiaColorS(this.value)" id="o"/>
+    <input type="radio" name="color2" value="orange" onclick="cambiaColorP('dos',this.value)" id="o"/>
     <label for="o">Naranja</label>
     <br/>
-    <input type="radio" name="color2" value="grey" onclick="cambiaColorS(this.value)" id="g"/>
+    <input type="radio" name="color2" value="grey" onclick="cambiaColorP('dos',this.value)" id="g"/>
     <label for="g">Gris</label>
     <br/>
-    <input type="radio" name="color2" value="green" onclick="cambiaColorS(this.value)" id="gr"/>
+    <input type="radio" name="color2" value="green" checked onclick="cambiaColorP('dos',this.value)" id="gr"/>
     <label for="gr">Verde</label>
 </form>
 
     <hr/>
 
-    <div id="cuadro1" style="width:150px;height: 150px; border:1px solid black"></div>
+    <div id="uno" style="width:150px;height: 150px; border:1px solid black;background-color: red;"></div>
     <br/>
-    <div id="cuadro2" style="width:150px;height: 150px; border:1px solid black"></div>
+    <div id="dos" style="width:150px;height: 150px; border:1px solid black;background-color: green;"></div>
     <script>
-        function cambiaColorP(color){
-            document.getElementById("cuadro1").style.backgroundColor = color;
+        function cambiaColorP(div,color){
+            document.getElementById(div).style.backgroundColor = color;
         }
-        function cambiaColorS(color){
-            document.getElementById("cuadro2").style.backgroundColor = color;
-        }
+      
 
     </script>
 </body>
