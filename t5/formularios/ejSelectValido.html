@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar Select</title>
+</head>
+<body>
+<form name="formulario">
+    <select name="seleccion">
+        <option value="no">[seleccione una opcion]</option>
+        <option value="uno">Opcion 1</option>
+        <option value="dos">Opcion 2</option>
+        <option value="tres">Opcion 3</option>
+
+    </select>
+    <input type="button" onclick="validar()" value="Enviar"/>
+</form>
+<script>
+    function validar(){
+        
+        // formulario.seleccion.selectedIndex == 0
+        // console.log(formulario.seleccion.selectedIndex);
+        if(formulario.seleccion.options[0].selected){
+            alert("Escoja una opcion valida");
+        }
+        else{
+            alert("bien");
+
+        }
+    }
+
+
+</script>
+</body>
+</html>

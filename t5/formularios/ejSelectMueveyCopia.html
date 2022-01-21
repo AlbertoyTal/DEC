@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selects</title>
+</head>
+<body>
+    <form name="formulario">
+        Introduzca texto: <input type="text" name="texto" onkeyup="habilitar()"/>
+        <input type="button"  name="alta" onclick="aniadir()" value="Añadir" disabled/>
+        <br/>
+            <select name="lista1" multiple>
+                <option value="uno">Opción 1</option>
+                <option value="dos">Opción 2</option>
+                <option value="tres">Opción 3</option>
+
+            </select>
+            <input type="button" onclick="moverS('1')" value=">>"/>
+            <input type="button" onclick="moverS('2')" value="<<"/>
+            <input type="button" onclick="moverT('1')" value=">>|"/>
+            <input type="button" onclick="moverT('2')" value="|<<"/>
+            <input type="button" onclick="borrarT('1')" value="X1"/>
+            <input type="button" onclick="borrarT('2')" value="X2"/>
+
+            <select name="lista2" multiple>
+            </select>
+            <br/>
+            <input type="button" onclick="copiar('1')" value="Copiar a la derecha"/>
+            <input type="button" onclick="copiar('2')" value="Copiar a la izquierda"/>
+            <br/>
+            <input type="button" onclick="borrar('1')" value="Borrar de la izquierda"/>
+            <input type="button" onclick="borrar('2')" value="Borrar de la derecha"/>
+    </form>
+    <script>
+        function habilitar(){
+            if(formulario.texto.value.length>0){
+                formulario.alta.disabled = false;
+            }
+            else{
+                formulario.alta.disabled = true;
+            }
+        }
+
+        function aniadir(){
+            var nOpcion = formulario.texto.value;
+            formulario.lista1.options[formulario.lista1.length] = new Option(nOpcion,nOpcion,"","");
+            formulario.alta.disabled = true;
+            formulario.texto.value = "";
+        }
+
+        function moverS(dir){
+            if(dir=="1"){
+            for(var i = formulario.lista1.length -1 ; i>=0 ; i--){
+                if(formulario.lista1.options[i].selected){
+                     formulario.lista2.options[formulario.lista2.length] = new Option(formulario.lista1.options[i].text,formulario.lista1.options[i].value,"","");
+                     formulario.lista1.options[i] = null;
+                }
+            }
+        }
+        else{
+            for(var i = formulario.lista2.length -1 ; i>=0 ; i--){
+                if(formulario.lista2.options[i].selected){
+                     formulario.lista1.options[formulario.lista1.length] = new Option(formulario.lista2.options[i].text,formulario.lista2.options[i].value,"","");
+                     formulario.lista2.options[i] = null;
+                }
+            }
+
+        }
+        }
+        
+        function moverT(dir){
+            if(dir=="1"){
+            for(var i = formulario.lista1.length -1 ; i>=0 ; i--){
+                
+                     formulario.lista2.options[formulario.lista2.length] = new Option(formulario.lista1.options[i].text,formulario.lista1.options[i].value,"","");
+                     formulario.lista1.options[i] = null;
+                
+            }
+        }
+        else{
+            for(var i = formulario.lista2.length -1 ; i>=0 ; i--){
+                
+                formulario.lista1.options[formulario.lista1.length] = new Option(formulario.lista2.options[i].text,formulario.lista2.options[i].value,"","");
+                formulario.lista2.options[i] = null;
+           
+       }
+        }
+        }
+
+        function borrarT(dir){
+            if(dir=="1"){
+                formulario.lista1.length = 0;
+            }
+            else{
+                formulario.lista2.length = 0;
+            }
+       
+        }
+
+        function copiar(dir){
+            if(dir=="1"){
+            for(var i = formulario.lista1.length -1 ; i>=0 ; i--){
+                if(formulario.lista1.options[i].selected){
+                     formulario.lista2.options[formulario.lista2.length] = new Option(formulario.lista1.options[i].text,formulario.lista1.options[i].value,"","");
+                     
+                }
+            }
+        }
+        else{
+            for(var i = formulario.lista2.length -1 ; i>=0 ; i--){
+                if(formulario.lista2.options[i].selected){
+                     formulario.lista1.options[formulario.lista1.length] = new Option(formulario.lista2.options[i].text,formulario.lista2.options[i].value,"","");
+                     
+                }
+            }
+
+        }
+        }
+        function borrar(dir){
+            if(dir=="1"){
+            for(var i = formulario.lista1.length -1 ; i>=0 ; i--){
+                if(formulario.lista1.options[i].selected){
+                     
+                     formulario.lista1.options[i] = null;
+                }
+            }
+        }
+        else{
+            for(var i = formulario.lista2.length -1 ; i>=0 ; i--){
+                if(formulario.lista2.options[i].selected){
+        
+                     formulario.lista2.options[i] = null;
+                }
+            }
+
+        }
+        }
+
+    </script>
+</body>
+</html>
