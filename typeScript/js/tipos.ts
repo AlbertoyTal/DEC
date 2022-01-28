@@ -36,6 +36,12 @@ if(true){
 }
 console.log(foo2);
 
+let mivar: string | number = "Cadena";
+mivar = 34;
+
+type miTipo = string | number;
+let otraVar: miTipo = "Cadena";
+
 
 
 cadena = "Booleano = "+booleano+"<br/>Numero = "+numero;
