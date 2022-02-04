@@ -18,5 +18,20 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<videojuego></videojuego>
+
+<button (click)="ocultarVideojuegos(false)" *ngIf="mostrar_videojuegos">Ocultar Videojuegos</button>
+<button (click)="ocultarVideojuegos(true)" *ngIf="!mostrar_videojuegos">Visualizar Videojuegos</button>
+
+<videojuego *ngIf="mostrar_videojuegos"></videojuego>
+<div style="text-align:center">
+<dado></dado>
+<dado></dado>
+<dado></dado>
+</div>
+
+<button (click)="ocultarZapatillas(false)" *ngIf="mostrarZapatillas">Ocultar Zapatillas</button>
+<button (click)="ocultarZapatillas(true)" *ngIf="!mostrarZapatillas">Visualizar Zapatillas</button>
+
+<zapatillas *ngIf="mostrarZapatillas"></zapatillas>
+
 <router-outlet></router-outlet>
