@@ -6,10 +6,15 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<div>
+<div [ngStyle]="{
+    'background':config.fondo,
+    'padding': '20px',
+    'border' : '5px solid black',
+    'border-color' : config.color 
+}">
     <span>{{ title }} app is running! </span>
     <span>{{ texto }}</span>
-</div>
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
@@ -19,19 +24,19 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<button (click)="ocultarVideojuegos(false)" *ngIf="mostrar_videojuegos">Ocultar Videojuegos</button>
-<button (click)="ocultarVideojuegos(true)" *ngIf="!mostrar_videojuegos">Visualizar Videojuegos</button>
+    <button (click)="ocultarVideojuegos(false)" *ngIf="mostrar_videojuegos">Ocultar Videojuegos</button>
+    <button (click)="ocultarVideojuegos(true)" *ngIf="!mostrar_videojuegos">Visualizar Videojuegos</button>
 
-<videojuego *ngIf="mostrar_videojuegos"></videojuego>
-<div style="text-align:center">
-<dado></dado>
-<dado></dado>
-<dado></dado>
+    <videojuego *ngIf="mostrar_videojuegos"></videojuego>
+    <div style="text-align:center">
+        <dado></dado>
+        <dado></dado>
+        <dado></dado>
+    </div>
+
+    <button (click)="ocultarZapatillas(false)" *ngIf="mostrarZapatillas">Ocultar Zapatillas</button>
+    <button (click)="ocultarZapatillas(true)" *ngIf="!mostrarZapatillas">Visualizar Zapatillas</button>
+
+    <zapatillas *ngIf="mostrarZapatillas"></zapatillas>
 </div>
-
-<button (click)="ocultarZapatillas(false)" *ngIf="mostrarZapatillas">Ocultar Zapatillas</button>
-<button (click)="ocultarZapatillas(true)" *ngIf="!mostrarZapatillas">Visualizar Zapatillas</button>
-
-<zapatillas *ngIf="mostrarZapatillas"></zapatillas>
-
 <router-outlet></router-outlet>
