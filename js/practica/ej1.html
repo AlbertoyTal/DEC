@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 1</title>
+</head>
+<body>
+<form name="formulario">
+    <input type="text" name="texto">
+    <input type="button" value="Añadir" onclick="valida()">
+
+    <br/>
+    <select name="opciones">
+        <option>Opcion 1</option>
+        <option>Opcion 2</option>
+        <option>Opcion 3</option>
+    </select>
+</form>
+    <script>
+        function valida(){
+            var  ok = false;
+            var expresion = /^[A-ZÁÉÍÓÚÑÇ][a-z0-9áéíóúñç\- ]{2,18}$/;
+            var texto = formulario.texto.value;
+            if(expresion.test(texto)){
+                ok = true;
+            }
+            if(ok){
+                formulario.opciones.options[formulario.opciones.length] = new Option(texto,texto,'','');
+                formulario.texto.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
