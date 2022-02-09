@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulada</title>
+</head>
+<body>
+    <form action="http://google.com" name="formulario" onsubmit="return valida();">
+        <input type="text" name="texto"/>
+        <input type="submit" value="Enviar"/>
+    </form>
+    <script>
+        function valida(){
+            var exp = /^[A-Za-z]{1,}\.(com)$/;
+            var texto = formulario.texto.value;
+            var ok = false;
+            if(exp.test(texto)){
+                ok=true;
+            }
+            else{
+                alert("mal");
+            }
+            return ok;
+        }
+    </script>
+</body>
+</html>
