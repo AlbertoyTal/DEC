@@ -7,17 +7,44 @@
     </li>
 </ul>
 
-
 <ul>
     <li *ngFor="let deportiva of zapatillas">
 
         <span [ngStyle]="{
-                'text-decoration' : !deportiva.stock ? 'line-through' : 'none',
-                'color' : deportiva.precio<=120 ? 'blue' : 'black'
+                'text-decoration' : !deportiva.stock ? 'line-through' : 'none'
             }">
 <!-- Si precio <= 120 en oferta, texto en azul, si no black  -->
-            {{deportiva.nombre}} -  <strong>{{deportiva.precio}}€</strong>
+            {{deportiva.nombre}} -  <strong>{{deportiva.precio}}€ </strong>
+            </span>
+            <span *ngIf="deportiva.precio <= 120" [ngStyle]="{
+                'color' : 'blue'
+            }">
+                <strong> EN OFERTA!!!</strong>
+           
+        </span>
+    </li>
+</ul>
 
+<p>El color predominante de la mayoría de nuestras zapatillas es: </p>
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'yellow'">
+        <span [ngStyle]="{'background' : color}">
+            Amarillo
+        </span>
+    </li>
+    <li *ngSwitchCase="'red'">
+        <span [ngStyle]="{'background' : color}">
+            Rojo
+        </span>
+    </li>
+    <li *ngSwitchCase="'blue'">
+        <span [ngStyle]="{'background' : color}">
+            Azul
+        </span>
+    </li>
+    <li *ngSwitchCase="'orange'">
+        <span [ngStyle]="{'background' : color}">
+            Naranja
         </span>
     </li>
 </ul>
