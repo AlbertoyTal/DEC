@@ -12,6 +12,24 @@
         <input type="submit" value="Enviar"/>
     </form>
     <script>
+        window.onload = cargado;
+
+
+        function cargado(){
+            alert("Se ha cargado");
+        }
+
+        window.onunload = confirmaSalida;
+
+        function confirmaSalida(){
+            return "Va a salir";        
+
+        }
+        
+    
+
+
+
         function valida(){
             var exp = /^[A-Za-z]{1,}\.(com)$/;
             var texto = formulario.texto.value;
