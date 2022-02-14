@@ -11,6 +11,7 @@ export class ZapatillasComponent implements OnInit {
   public zapatillas: Array<Zapatilla>;
   public marcas: Array<String>;
   public color: string;       // creamos una variable 
+  public textoMarca: string="";
 
   constructor() {
     this.color = "blue";       // asignamos valor
@@ -36,6 +37,9 @@ export class ZapatillasComponent implements OnInit {
         this.marcas.push(zapatilla.marca);
       }
     });
+  }
+  aniadirMarca(){
+    this.marcas.push(this.textoMarca);
   }
 
 }
