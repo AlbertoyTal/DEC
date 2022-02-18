@@ -4,6 +4,4 @@ export var Configuracion = {
         titulo : "Aplicación Angular",
         descripcion : "Aprendiendo Angular"
 
-
-
 }

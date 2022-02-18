@@ -1,9 +1,31 @@
 <!-- Uso de las propiedades por interpolacion (Binding por interpolacion) -->
 <h2> {{ titulo }}</h2> 
 <p>{{ listado }}</p>
-    <ul>
-        <li>GTA</li>
-        <li>Prince of Persia</li>
-        <li>Mario</li>
-    </ul>
+    <table border="1" style="border-collapse: collapse;">
+        <tr>
+            <th>Nombre </th>
+            <th>Compañia </th>
+            <th>Precio </th>
+            <th>Online? </th>
+            <th>Stock? </th>
+        </tr>
+        <tr *ngFor="let videojuego of videojuegos">
+            <td>
+                {{ videojuego.nombre }}
+            </td>
+            <td>
+                {{ videojuego.company }}
+            </td>
+            <td>
+                {{ videojuego.precio == 0 ? "Gratis" : videojuego.precio+"€" }}
+            </td>
+            <td>
+                {{ videojuego.online? "Sí" : "No" }}
+            </td>
+            <td>
+                {{ videojuego.stock? "Sí" : "No"}}
+            </td>
+        </tr>
+    </table>                        
+   
 <button (click)="cambiarTitulo()">Cambiar Título</button>

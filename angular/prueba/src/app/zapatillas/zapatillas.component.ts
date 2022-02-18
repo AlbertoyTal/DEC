@@ -12,9 +12,20 @@ export class ZapatillasComponent implements OnInit {
   public marcas: Array<String>;
   public color: string;       // creamos una variable 
   public textoMarca: string="";
+  public nombre:string;
+  public marca:string;
+  public c:string;
+  public precio:number;
+  
 
   constructor() {
     this.color = "blue";       // asignamos valor
+    this.nombre = "";
+    this.marca = "";
+    this.c = "";
+    this.precio=0;
+    
+
     this.marcas = new Array;
     this.zapatillas = [
       new Zapatilla("Reebok Classic", "Reebok", "Verde", 123, true),
@@ -41,5 +52,8 @@ export class ZapatillasComponent implements OnInit {
   aniadirMarca(){
     this.marcas.push(this.textoMarca);
   }
-
+  addZapatilla(){
+    this.zapatillas.push(new Zapatilla(this.nombre,this.marca,this.c,this.precio,true))
+    this.getMarcas();
+  }
 }

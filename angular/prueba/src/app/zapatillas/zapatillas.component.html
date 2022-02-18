@@ -1,6 +1,14 @@
 <h2>{{ titulo }}</h2>
 
 <p>Comprar zapatillas de las mejores marcas</p>
+<p>Añadir Zapatilla</p>
+Nombre: <input type="text" [(ngModel)] = "nombre"/><br/>
+Marca: <input type="text" [(ngModel)] = "marca"/><br/>
+Color: <input type="text" [(ngModel)] = "c"/><br/>
+Precio: <input type="text" [(ngModel)] = "precio"/><br/>
+
+<input type="button" (click)="addZapatilla()" value="Añadir Zapatilla"/>
+
 <p>Añadir marca: </p>
 <input type="text" [(ngModel)] = "textoMarca" />
 <input type="button" (click)="aniadirMarca()" value="Añadir Marca"/>
