@@ -1,0 +1,53 @@
+<h3>Productos que hay en el carrito de la compra</h3>
+
+Nombre: <input type="text" [(ngModel)]="nombre" /><br/>
+Marca: <input type="text" [(ngModel)]="marca" /><br/>
+Precio: <input type="text" [(ngModel)]="precio" /><br/>
+Unidades: <input type="text" [(ngModel)]="unidades" /><br/><br/>
+<input type="button" (click)="addProducto()" value="Añadir al carrito"/><br/>
+<br/>
+
+<table border="1" style="border-collapse: collapse;">
+    <tr>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Precio</th>
+        <th>Unidades</th>
+        <th>¿Oferta?</th>
+        <th>Total</th>
+        
+    </tr>
+    <tr *ngFor="let producto of carrito">
+        <td>{{ producto.nombre}}</td>
+        <td>{{ producto.marca}}</td>
+        <td>{{ producto.precio}}€</td>
+        <td>{{ producto.unidades}}</td>
+        <td [ngStyle]="{
+            'color' : producto.precio < 5 ? 'green' : 'black',
+            'text-decoration' : producto.precio < 5 ? 'underline' : 'none'
+        }"
+        >{{ producto.precio<5 ? "Si" : "No" }} </td>
+        <td>{{ producto.unidades * producto.precio}}€</td>
+    </tr>
+</table>
+
+El color de nuestra marca es:
+
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'red'">
+        <span [ngStyle]="{
+            'background-color' : color
+        }">Rojo</span>
+    </li>
+    <li *ngSwitchCase="'blue'">
+        <span [ngStyle]="{
+            'background-color' : color
+        }">Azul</span>
+    </li>
+    <li *ngSwitchCase="'lavender'">
+        <span [ngStyle]="{
+            'background-color' : color
+        }">Lavadora</span>
+    </li>
+</ul>
+
