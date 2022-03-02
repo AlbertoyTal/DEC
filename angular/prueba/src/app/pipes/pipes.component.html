@@ -1,0 +1,25 @@
+<p>Nombre: <input type="text" [(ngModel)]="nombre"></p>
+{{ nombre | titlecase}}
+<br/>
+<hr/>
+<br/>
+{{ PI }}
+<br/>
+{{ PI | number  }}
+<br/>
+{{ PI | number:'1.0-6'  }}
+<br/>
+<p>Numero: <input type="text" [(ngModel)]="numero"></p>
+{{ numero | number:'1.0-6'}}
+<br/>
+<hr>
+<br/>
+<p>Fecha actual:  {{ hoy | date }}</p>
+<p>Fecha actual:  {{ hoy | date:'dd/MMMM/yyyy' }}</p>
+<p>Fecha actual:  {{ hoy | date:'dd/MMMM/yy' }}</p>
+<p>Fecha actual:  {{ hoy | date:'dd/MM/yyyy' }}</p>
+<p>Fecha actual:  {{ hoy | date:'short' }}</p>
+<p>Fecha actual:  {{ hoy | date:'medium' }}</p>
+<p>Fecha actual:  {{ hoy | date:'full' }}</p>
+
+
