@@ -14,6 +14,9 @@ import { DadoComponent } from './dado/dado.component';
 import { ZapatillasComponent } from './zapatillas/zapatillas.component';
 import { NombreComponent } from './nombre/nombre.component';
 import { PipesComponent } from './pipes/pipes.component';
+import { appRoutingProviders, routing } from './app.routing';
+import { HomeComponent } from './home/home.component';
+
 
 
 @NgModule({
@@ -23,14 +26,18 @@ import { PipesComponent } from './pipes/pipes.component';
     DadoComponent,
     ZapatillasComponent,
     NombreComponent,
-    PipesComponent
+    PipesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    routing
   ],
-  providers: [{provide:LOCALE_ID, useValue:'es'}],
+  providers: [
+    appRoutingProviders,
+    {provide:LOCALE_ID, useValue:'es'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

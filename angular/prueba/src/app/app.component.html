@@ -6,14 +6,14 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<div [ngStyle]="{
+<!-- <div [ngStyle]="{
     'background':config.fondo,
     'padding': '20px',
     'border' : '5px solid black',
     'border-color' : config.color 
 }">
     <span>{{ title }} app is running! </span>
-    <span>{{ texto }}</span>
+    <span>{{ texto }}</span> -->
 
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
@@ -32,7 +32,7 @@
         <dado></dado>
         <dado></dado>
         <dado></dado>
-    </div> -->
+    </div> 
 
     <button (click)="ocultarZapatillas(false)" *ngIf="mostrarZapatillas">Ocultar Zapatillas</button>
     <button (click)="ocultarZapatillas(true)" *ngIf="!mostrarZapatillas">Visualizar Zapatillas</button>
@@ -41,5 +41,14 @@
     <nombre></nombre>
     <videojuego></videojuego>
     <pipes></pipes>
-</div>
+</div> -->
+
+<nav>
+    <a [routerLink]="['']">Home</a> &nbsp;
+    <a [routerLink]="['zapatillas']">Zapatillas</a> &nbsp;
+    <a [routerLink]="['videojuego']">Videojuegos</a> &nbsp;
+    <a [routerLink]="['nombre']">Nombre</a> &nbsp;
+    <a [routerLink]="['pipes']">Datos</a> &nbsp;
+    <a [routerLink]="['dado']">Dado</a> &nbsp;
+</nav>
 <router-outlet></router-outlet>
