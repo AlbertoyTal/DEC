@@ -11,6 +11,7 @@ import { NombreComponent } from "./nombre/nombre.component";
 import { PipesComponent } from "./pipes/pipes.component";
 import { videojuegoComponent } from "./videojuego/videojuego.component";
 import { ZapatillasComponent } from "./zapatillas/zapatillas.component";
+import { DatosExternosComponent } from "./datos-externos/datos-externos.component";
 
 // crear un array con las rutas de acceso a los componentes
 
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     {path : "zapatillas", component : ZapatillasComponent},
     {path : "videojuego", component : videojuegoComponent},
     {path : "nombre", component : NombreComponent},
+    {path : "datosexternos", component : DatosExternosComponent},
     {path : "pipes", component : PipesComponent},
     {path : "dado", component : DadoComponent},
     {path : "**", component : HomeComponent}

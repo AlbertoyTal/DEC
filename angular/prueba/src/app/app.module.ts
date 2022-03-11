@@ -16,6 +16,8 @@ import { NombreComponent } from './nombre/nombre.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { appRoutingProviders, routing } from './app.routing';
 import { HomeComponent } from './home/home.component';
+import { DatosExternosComponent } from './datos-externos/datos-externos.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -27,13 +29,15 @@ import { HomeComponent } from './home/home.component';
     ZapatillasComponent,
     NombreComponent,
     PipesComponent,
-    HomeComponent
+    HomeComponent,
+    DatosExternosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    routing
+    routing,
+    HttpClientModule
   ],
   providers: [
     appRoutingProviders,
